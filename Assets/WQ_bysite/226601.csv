@@ -1,0 +1,15 @@
+"Date","Chlorophylla","Chlorophylla_Qual","Colour","Colour_Qual","Conductivity","Conductivity_Qual","DissolvedOrganicCarbon","DissolvedOrganicCarbon_Qual","FieldpH","FieldpH_Qual","FilteredReactivePhosphorus","FilteredReactivePhosphorus_Qual","KjeldahlNitrogen","KjeldahlNitrogen_Qual","NitrateNitriteasN","NitrateNitriteasN_Qual","Phaeophytin","Phaeophytin_Qual","TotalPhosphorus","TotalPhosphorus_Qual","TotalReactivePhosphorus","TotalReactivePhosphorus_Qual","TotalSuspendedSolids","TotalSuspendedSolids_Qual","Turbidity","Turbidity_Qual"
+"08:00:00 27/06/1993",NA,NA,NA,NA,150,65,NA,NA,7.8,65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,7.9,65
+"10:30:00 19/10/1995",2.9,65,65,65,140,65,3,65,8.1,65,0.02,65,0.6,65,0.4,65,2.9,65,0.07,65,NA,NA,31,65,16,65
+"10:40:00 28/07/1995",NA,NA,NA,NA,190,65,NA,NA,7.8,65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,13,65
+"11:00:00 04/10/1994",5.9,65,60,65,240,65,20,65,7.5,65,0.02,65,0.9,65,0.77,65,2.6,65,0.09,65,NA,NA,37,65,33,65
+"11:00:00 06/04/1994",NA,NA,NA,NA,180,65,NA,NA,7.2,65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,10,65
+"11:00:00 07/02/1995",9.4,65,50,65,120,65,5,65,6.1,65,0.008,65,0.4,65,0.13,65,7.3,65,0.07,65,NA,NA,29,65,NA,180
+"11:00:00 14/09/1993",NA,NA,NA,NA,220,65,NA,NA,6.6,65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,180
+"11:00:00 26/07/1995",1.4,65,75,65,NA,NA,1,65,NA,NA,NA,NA,0.6,65,1,65,2,65,0.07,65,0.01,65,21,65,NA,NA
+"11:30:00 02/05/1995",4.6,65,30,65,180,65,5,65,7.6,65,0.15,65,0.5,65,0.3,65,2.5,65,0.21,65,NA,NA,12,65,9.1,65
+"11:30:00 19/07/1994",1.8,65,30,65,160,65,14,65,6.9,65,0.02,65,0.4,65,0.38,65,4.5,65,0.06,65,NA,NA,7,65,10,65
+"11:30:00 20/12/1993",NA,NA,NA,NA,110,65,NA,NA,7.5,65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,180
+"12:00:00 22/07/1996",NA,NA,NA,NA,270,65,NA,NA,7.9,65,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,72,65
+"13:00:00 06/02/1996",31,65,47,65,120,65,12,65,8.2,65,0.01,65,0.5,65,0.01,65,12,65,0.04,65,NA,NA,14,65,14,65
+"13:45:00 12/03/1996",5.9,65,47,65,110,65,5,65,7.4,65,0.003,65,0.3,65,0.17,65,6.1,65,0.03,65,NA,NA,10,65,13,65
