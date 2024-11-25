@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.esri.arcgis-maps-sdk": "file:C:/Users/jnav0005/Downloads/arcgis-maps-sdk-unity-1.6.0.tgz",
     "com.monitor1394.xcharts": "https://github.com/XCharts-Team/XCharts.git",
     "com.unity.collab-proxy": "2.4.4",
     "com.unity.feature.development": "1.0.1",
