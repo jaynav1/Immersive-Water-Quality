@@ -1,0 +1,3 @@
+newmtl Terrain_DEM_tile_material
+	map_Kd Terrain_DEM_tile_material.jpg
+	illum 2
