@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class ClickToMove : MonoBehaviour
 {
     public NavMeshAgent agent; // Reference to the NavMeshAgent component
-    public float rotationSpeed = 5f; // Speed at which the character rotates
+    public float rotationSpeed; // Speed at which the character rotates
+    public float maxSpeed; // Maximum speed of the agent
+    public float minSpeed; // Minimum speed of the agent when not facing forward
+    public float flockRadius = 1.0f; // Radius for flocking behavior
     private bool isRotating = false; // Flag to check if the character is currently rotating
     private Vector3 targetPosition; // Target position to move to
     private Animator animator; // Reference to the Animator component
@@ -44,31 +47,37 @@ public class ClickToMove : MonoBehaviour
         }
 
         // Update the Animator with the agent's velocity
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        animator.SetFloat("Speed", agent.velocity.magnitude / maxSpeed);
+
+        // Adjust the agent's speed based on the angle between its forward direction and its velocity direction
+        AdjustAgentSpeed();
     }
 
-    // Coroutine to rotate the character towards the first waypoint in the path and then move
+    // Coroutine to rotate the character towards each waypoint in the path and then move
     private IEnumerator RotateAndMove()
     {
-        // Set the destination of the NavMeshAgent to the target position
-        agent.SetDestination(targetPosition);
+        // Calculate an offset position for flocking behavior
+        Vector3 offsetPosition = CalculateOffsetPosition(targetPosition);
+
+        // Set the destination of the NavMeshAgent to the offset position
+        agent.SetDestination(offsetPosition);
 
         // Wait until the path is calculated
         yield return new WaitUntil(() => agent.pathPending == false);
 
-        // Get the first waypoint in the path
-        if (agent.path.corners.Length > 1)
+        // Iterate through each waypoint in the path
+        for (int i = 1; i < agent.path.corners.Length; i++)
         {
-            Vector3 firstWaypoint = agent.path.corners[1];
+            Vector3 waypoint = agent.path.corners[i];
 
-            // Set the rotating flag to true and calculate the direction to the first waypoint
+            // Set the rotating flag to true and calculate the direction to the waypoint
             isRotating = true;
-            Vector3 direction = (firstWaypoint - transform.position).normalized;
+            Vector3 direction = (waypoint - transform.position).normalized;
 
-            // Calculate the rotation needed to look at the first waypoint
+            // Calculate the rotation needed to look at the waypoint
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 
-            // Rotate the character until it faces the first waypoint
+            // Rotate the character until it faces the waypoint
             while (Quaternion.Angle(transform.rotation, lookRotation) > 0.1f)
             {
                 // Smoothly rotate the character
@@ -78,8 +87,49 @@ public class ClickToMove : MonoBehaviour
 
             // Set the rotating flag to false
             isRotating = false;
+
+            // Move to the waypoint
+            agent.SetDestination(waypoint);
+
+            // Wait until the agent reaches the waypoint
+            yield return new WaitUntil(() => Vector3.Distance(transform.position, waypoint) <= agent.stoppingDistance);
         }
 
-        // The agent will now move towards the target position
+        // The agent will now move towards the final offset position
+        agent.SetDestination(offsetPosition);
+    }
+
+    // Adjust the agent's speed based on the angle between its forward direction and its velocity direction
+    private void AdjustAgentSpeed()
+    {
+        if (agent.velocity.sqrMagnitude > 0.1f)
+        {
+            // Calculate the angle between the agent's forward direction and its velocity direction
+            float angle = Vector3.Angle(transform.forward, agent.velocity);
+
+            // Adjust the agent's speed based on the angle
+            if (angle > 45f)
+            {
+                agent.speed = minSpeed;
+            }
+            else
+            {
+                agent.speed = maxSpeed;
+            }
+        }
+    }
+
+    // Calculate an offset position for flocking behavior
+    private Vector3 CalculateOffsetPosition(Vector3 target)
+    {
+        // Generate a random angle in radians
+        float angle = Random.Range(0f, Mathf.PI * 2);
+
+        // Calculate the x and z coordinates on the circumference of the circle
+        float x = Mathf.Cos(angle) * flockRadius;
+        float z = Mathf.Sin(angle) * flockRadius;
+
+        // Return the target position with the offset
+        return new Vector3(target.x + x, target.y, target.z + z);
     }
 }
