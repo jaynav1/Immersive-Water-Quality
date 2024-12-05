@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 862250419370276350, guid: bcc79694f3ccda34eb81dba966719547, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d71e5374f1ac9f40bf08243ebc27b4c, type: 2}
     - target: {fileID: 919132149155446097, guid: bcc79694f3ccda34eb81dba966719547, type: 3}
       propertyPath: m_Name
       value: BullAI
