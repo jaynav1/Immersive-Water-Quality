@@ -10,6 +10,8 @@ public class ClickToMove : MonoBehaviour
     public float maxSpeed; // Maximum speed of the agent
     public float minSpeed; // Minimum speed of the agent when not facing forward
     public float flockRadius = 1.0f; // Radius for flocking behavior
+    public float minDistance = 7.0f; // Minimum distance to maintain from the clicked point
+    public bool useFlocking = false; // Flag to toggle between flocking and herding behavior
     private bool isRotating = false; // Flag to check if the character is currently rotating
     private Vector3 targetPosition; // Target position to move to
     private Animator animator; // Reference to the Animator component
@@ -56,11 +58,21 @@ public class ClickToMove : MonoBehaviour
     // Coroutine to rotate the character towards each waypoint in the path and then move
     private IEnumerator RotateAndMove()
     {
-        // Calculate an offset position for flocking behavior
-        Vector3 offsetPosition = CalculateOffsetPosition(targetPosition);
+        Vector3 destination;
 
-        // Set the destination of the NavMeshAgent to the offset position
-        agent.SetDestination(offsetPosition);
+        if (useFlocking)
+        {
+            // Calculate an offset position for flocking behavior
+            destination = CalculateOffsetPosition(targetPosition);
+        }
+        else
+        {
+            // Calculate a herding position
+            destination = CalculateHerdingPosition(targetPosition);
+        }
+
+        // Set the destination of the NavMeshAgent to the calculated position
+        agent.SetDestination(destination);
 
         // Wait until the path is calculated
         yield return new WaitUntil(() => agent.pathPending == false);
@@ -95,8 +107,8 @@ public class ClickToMove : MonoBehaviour
             yield return new WaitUntil(() => Vector3.Distance(transform.position, waypoint) <= agent.stoppingDistance);
         }
 
-        // The agent will now move towards the final offset position
-        agent.SetDestination(offsetPosition);
+        // The agent will now move towards the final calculated position
+        agent.SetDestination(destination);
     }
 
     // Adjust the agent's speed based on the angle between its forward direction and its velocity direction
@@ -131,5 +143,25 @@ public class ClickToMove : MonoBehaviour
 
         // Return the target position with the offset
         return new Vector3(target.x + x, target.y, target.z + z);
+    }
+
+    private Vector3 CalculateHerdingPosition(Vector3 target)
+    {
+        // Calculate the vector from the current position to the target
+        Vector3 direction = (agent.transform.position - target).normalized;
+
+        // Calculate the distance to the target
+        float distance = Vector3.Distance(agent.transform.position, target);
+
+        // If the distance is less than the minimum distance, calculate the herding position
+        if (distance < minDistance)
+        {
+            // Calculate the herding position by moving along the direction vector
+            Vector3 herdingPosition = agent.transform.position + direction * (minDistance - distance);
+            return herdingPosition;
+        }
+
+        // If the distance is greater than or equal to the minimum distance, return the current position
+        return agent.transform.position;
     }
 }
