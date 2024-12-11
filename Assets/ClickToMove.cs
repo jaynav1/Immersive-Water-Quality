@@ -28,6 +28,7 @@ public class ClickToMove : MonoBehaviour
         // Check if the left mouse button is clicked
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Mouse button pressed");
             // Create a ray from the camera to the mouse position
             Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
 

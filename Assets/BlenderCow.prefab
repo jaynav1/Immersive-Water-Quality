@@ -165,7 +165,7 @@ MonoBehaviour:
   minSpeed: 2
   flockRadius: 7
   minDistance: 25
-  useFlocking: 0
+  useFlocking: 1
 --- !u!114 &3302620229930357325
 MonoBehaviour:
   m_ObjectHideFlags: 0
