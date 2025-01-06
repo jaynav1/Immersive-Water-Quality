@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class AnimatePlane : MonoBehaviour
     // Constants for the heights of the floor and channel bed
     private const float floorHeight = -9.07f;
     private const float channelBedHeight = -15.75f;
+
+    public event Action<bool> OnOverflow;
 
     // Public variable to set the fill percentage in the inspector
     [Range(0.0f, 1.0f)]
@@ -33,6 +36,12 @@ public class AnimatePlane : MonoBehaviour
     // Coroutine to animate the plane to a new fill percentage
     private IEnumerator movePlane(float newPercentage)
     {
+        if (newPercentage != 1f)
+        {
+            // Send overflow message
+            OnOverflow.Invoke(false);
+        }
+
         // Get the current position of the plane
         Vector3 newLocation = transform.localPosition;
         float currentHeight = newLocation.y;
@@ -48,6 +57,12 @@ public class AnimatePlane : MonoBehaviour
             newLocation.y = currentHeight;
             transform.localPosition = newLocation;
             yield return null; // Wait for the next frame
+        }
+
+        if (newPercentage == 1f)
+        {
+            // Send overflow message
+            OnOverflow.Invoke(true);
         }
     }
 

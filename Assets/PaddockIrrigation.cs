@@ -23,8 +23,10 @@ public class PaddockIrrigation : MonoBehaviour
 
         // Hide the plane initially
         transform.localScale = new Vector3(0, initialScale.y, initialScale.z);
-        transform.localPosition = new Vector3(initialPosition.x - (initialScale.x * 3), initialPosition.y, initialPosition.z);
-        Irrigate();
+        // Hardcode the position because idk
+        transform.localPosition = new Vector3(-55, initialPosition.y, initialPosition.z);
+        StartCoroutine(Irrigate());
+        SaturateWater();
     }
 
     // Update is called once per frame
@@ -33,11 +35,15 @@ public class PaddockIrrigation : MonoBehaviour
 
     }
 
-    public void Irrigate()
+    public IEnumerator Irrigate()
     {
         Debug.Log("Irrigating the paddock...");
         filled = true;
-        StartCoroutine(AnimateFill(true));
+        yield return StartCoroutine(AnimateFill());
+        Debug.Log("Paddock filled with water");
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(AnimateDrain());
+        Debug.Log("Paddock drained");
     }
 
     public void SaturateWater()
@@ -53,14 +59,14 @@ public class PaddockIrrigation : MonoBehaviour
         }
     }
 
-    public void Drain()
+    public IEnumerator Drain()
     {
         if (filled)
         {
             Debug.Log("Draining the paddock...");
             filled = false;
             saturated = false;
-            StartCoroutine(AnimateFill(false));
+            yield return StartCoroutine(AnimateFill());
         }
         else
         {
@@ -68,20 +74,65 @@ public class PaddockIrrigation : MonoBehaviour
         }
     }
 
-    private IEnumerator AnimateFill(bool isFilling)
+    private IEnumerator AnimateFill()
     {
-        float targetScaleX = isFilling ? initialScale.x : 0;
-        Vector3 targetPosition = isFilling ? initialPosition : new Vector3(initialPosition.x - initialScale.x / 2, initialPosition.y, initialPosition.z);
+        float targetScaleX = initialScale.x;
+        Vector3 targetPosition = initialPosition;
 
-        while (transform.localScale.x != targetScaleX)
+        float initialScaleX = transform.localScale.x;
+        float initialPositionX = transform.localPosition.x;
+
+        float duration = Mathf.Abs(targetScaleX - initialScaleX) / animationSpeed; // Calculate the duration based on the scale change
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
         {
-            float newScaleX = Mathf.MoveTowards(transform.localScale.x, targetScaleX, animationSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            float newScaleX = Mathf.Lerp(initialScaleX, targetScaleX, t);
             transform.localScale = new Vector3(newScaleX, initialScale.y, initialScale.z);
 
-            float newPositionX = Mathf.MoveTowards(transform.localPosition.x, targetPosition.x, animationSpeed * Time.deltaTime);
+            float newPositionX = Mathf.Lerp(initialPositionX, targetPosition.x, t);
             transform.localPosition = new Vector3(newPositionX, initialPosition.y, initialPosition.z);
 
             yield return null; // Wait for the next frame
         }
+
+        // Ensure the final values are set
+        transform.localScale = new Vector3(targetScaleX, initialScale.y, initialScale.z);
+        transform.localPosition = new Vector3(targetPosition.x, initialPosition.y, initialPosition.z);
+    }
+
+    private IEnumerator AnimateDrain()
+    {
+        float targetScaleX = 0;
+        Vector3 targetPosition = new Vector3(35, initialPosition.y, initialPosition.z);
+
+        float initialScaleX = transform.localScale.x;
+        float initialPositionX = transform.localPosition.x;
+
+        float duration = Mathf.Abs(targetScaleX - initialScaleX) / animationSpeed; // Calculate the duration based on the scale change
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            float newScaleX = Mathf.Lerp(initialScaleX, targetScaleX, t);
+            transform.localScale = new Vector3(newScaleX, initialScale.y, initialScale.z);
+
+            float newPositionX = Mathf.Lerp(initialPositionX, targetPosition.x, t);
+            transform.localPosition = new Vector3(newPositionX, initialPosition.y, initialPosition.z);
+
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the final values are set
+        transform.localScale = new Vector3(targetScaleX, initialScale.y, initialScale.z);
+        transform.localPosition = new Vector3(targetPosition.x, initialPosition.y, initialPosition.z);
     }
 }
