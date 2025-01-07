@@ -9,11 +9,8 @@ public class AnimatePlane : MonoBehaviour
     private const float floorHeight = -9.07f;
     private const float channelBedHeight = -15.75f;
 
-    public event Action<bool> OnOverflow;
-
-    // Public variable to set the fill percentage in the inspector
-    [Range(0.0f, 1.0f)]
-    public float fillPercentage = 0.0f;
+    // Public variable to set the fill volume in the inspector
+    public float fillVolume = 0.0f;
 
     // Speed parameter for the animation
     public float animationSpeed = 0.1f;
@@ -21,9 +18,14 @@ public class AnimatePlane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the initial position of the plane based on the fill percentage
+        // Exception if the volume is not positive
+        if (fillVolume <= 0)
+        {
+            throw new ArgumentException("Fill volume must be positive");
+        }
+        // Set the initial position of the plane based on the fill volume
         Vector3 newLocation = transform.localPosition;
-        newLocation.y = Mathf.Lerp(channelBedHeight, floorHeight, fillPercentage);
+        newLocation.y = Mathf.Lerp(channelBedHeight, floorHeight, 0);
         transform.localPosition = newLocation;
     }
 
@@ -33,26 +35,41 @@ public class AnimatePlane : MonoBehaviour
         // No update logic needed for now
     }
 
-    // Coroutine to animate the plane to a new fill percentage
-    public IEnumerator movePlane(float newPercentage)
+    // Public method to animate the plane to a new fill volume
+    public void AnimateFill(float newVolume)
     {
-        fillPercentage = newPercentage; // Update the fill percentage
-
-        if (newPercentage != 1f)
+        // Exception if the new volume is not positive
+        if (newVolume <= 0)
         {
-            // Send overflow message
-            OnOverflow?.Invoke(false);
+            throw new ArgumentException("New volume must be positive");
         }
+        // Coroutine to animate the plane to the new fill volume
+        StartCoroutine(movePlane(newVolume));
+    }
 
+    public IEnumerator AnimateFillandWait(float newVolume)
+    {
+        // Exception if the new volume is not positive
+        if (newVolume <= 0)
+        {
+            throw new ArgumentException("New volume must be positive");
+        }
+        // Coroutine to animate the plane to the new fill volume
+        yield return movePlane(newVolume);
+    }
+
+    // Coroutine to animate the plane to a new fill volume
+    public IEnumerator movePlane(float newVolume)
+    {
         // Get the current position of the plane
         Vector3 newLocation = transform.localPosition;
         float currentHeight = newLocation.y;
 
         // Calculate the target height using SmoothStep for a smoother transition
-        float targetHeight = Mathf.SmoothStep(channelBedHeight, floorHeight, newPercentage);
+        float targetHeight = Mathf.SmoothStep(channelBedHeight, floorHeight, getPercentage(newVolume));
 
         // Move the plane towards the target height
-        while (currentHeight != targetHeight)
+        while (Mathf.Abs(currentHeight - targetHeight) > 0.01f) // Use a small threshold for comparison
         {
             // Move the current height towards the target height based on the animation speed
             currentHeight = Mathf.MoveTowards(currentHeight, targetHeight, animationSpeed * Time.deltaTime);
@@ -61,10 +78,18 @@ public class AnimatePlane : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
-        if (newPercentage == 1f)
+        // Ensure the final position is set
+        newLocation.y = targetHeight;
+        transform.localPosition = newLocation;
+    }
+
+    // Helper method to calculate the percentage of the fill volume
+    private float getPercentage(float newVolume)
+    {
+        if (fillVolume == 0)
         {
-            // Send overflow message
-            OnOverflow?.Invoke(true);
+            return 0;
         }
+        return Mathf.Clamp(newVolume / fillVolume, 0f, 1f);
     }
 }
