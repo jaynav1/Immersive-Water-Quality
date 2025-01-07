@@ -34,12 +34,14 @@ public class AnimatePlane : MonoBehaviour
     }
 
     // Coroutine to animate the plane to a new fill percentage
-    private IEnumerator movePlane(float newPercentage)
+    public IEnumerator movePlane(float newPercentage)
     {
+        fillPercentage = newPercentage; // Update the fill percentage
+
         if (newPercentage != 1f)
         {
             // Send overflow message
-            OnOverflow.Invoke(false);
+            OnOverflow?.Invoke(false);
         }
 
         // Get the current position of the plane
@@ -62,14 +64,7 @@ public class AnimatePlane : MonoBehaviour
         if (newPercentage == 1f)
         {
             // Send overflow message
-            OnOverflow.Invoke(true);
+            OnOverflow?.Invoke(true);
         }
-    }
-
-    // Public method to set the fill percentage and start the animation
-    public void setFillPercentage(float newPercentage)
-    {
-        fillPercentage = newPercentage; // Update the fill percentage
-        StartCoroutine(movePlane(newPercentage)); // Start the animation coroutine
     }
 }
