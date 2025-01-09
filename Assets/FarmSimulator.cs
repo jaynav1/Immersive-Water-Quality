@@ -1,3 +1,5 @@
+//Scenario 1 : Normal weather conditions with optimum storage condition 
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
@@ -41,12 +43,9 @@ public class FarmSimulator : MonoBehaviour
     {
     }
 
-    private IEnumerator Animate()
+ private IEnumerator Animate()
     {
-        // Use multiple subroutines to animate the farm
-
         // 1. fill the irrigation water plane
-        //yield return StartCoroutine(irrigationWaterPlane.GetComponent<AnimatePlane>().movePlane(1));
         yield return irrigationWaterPlaneScript.movePlane(1000);
 
         // 2. fill the paddock while draining the irrigation water plane
@@ -56,24 +55,19 @@ public class FarmSimulator : MonoBehaviour
         // 3. saturate the paddock
         yield return StartCoroutine(paddockScript.AnimateSaturation());
 
-
-        // 4. fill the reuse water plane while draining the paddock
+        // 4. fill the reuse water plane while draining the paddock and no overflow due to sufficient storage
         StartCoroutine(paddockScript.AnimateDrain());
         yield return StartCoroutine(reuseWaterPlaneScript.movePlane(1000));
-        overflowParticles.Play();
 
-        // 5. fill the effluent water plane
+        // 5. fill the effluent water plane and no overflow due to sufficient storage
         yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
 
         // 6. Pump water back to irrigation (effluent + pump rate of reuse)
         StartCoroutine(effluentWaterPlaneScript.movePlane(0));
         StartCoroutine(reuseWaterPlaneScript.movePlane(1000 - 500));
-        overflowParticles.Stop();
         yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(500 + 100));
-        
     }
-
-
-
-
 }
+
+
+
