@@ -63,7 +63,13 @@ public class FarmSimulator : MonoBehaviour
         overflowParticles.Play();
 
         // 5. fill the effluent water plane
-        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(1000));
+        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
+
+        // 6. Pump water back to irrigation (effluent + pump rate of reuse)
+        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
+        StartCoroutine(reuseWaterPlaneScript.movePlane(1000 - 500));
+        overflowParticles.Stop();
+        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(500 + 100));
         
     }
 
