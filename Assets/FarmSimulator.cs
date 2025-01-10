@@ -43,7 +43,7 @@ public class FarmSimulator : MonoBehaviour
     private IEnumerator AnimateNormalWeather()
     {
         // 1. fill the irrigation water plane
-        yield return irrigationWaterPlaneScript.movePlane(1500);
+        yield return irrigationWaterPlaneScript.movePlane(1700);
 
         // 2. fill the paddock while draining the irrigation water plane
         StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
@@ -69,7 +69,7 @@ public class FarmSimulator : MonoBehaviour
     private IEnumerator AnimateHeavyRainfall()
     {
         // 1. fill the irrigation water plane
-        yield return irrigationWaterPlaneScript.movePlane(1800);
+        yield return irrigationWaterPlaneScript.movePlane(1900);
 
         // 2. fill the paddock while draining the irrigation water plane
         StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
@@ -117,5 +117,85 @@ public class FarmSimulator : MonoBehaviour
         StartCoroutine(effluentWaterPlaneScript.movePlane(0));
         StartCoroutine(reuseWaterPlaneScript.movePlane(500 - 250));
         yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(250 + 50));
+    }
+
+    // Scenarios for different storage volumes 
+    // Least storage volume with normal weather condition
+    private IEnumerator AnimateLeastStorageConditions()
+    {
+        // 1. fill the irrigation water plane as per the weather condition for which the storage volume is being visualised for 
+        yield return irrigationWaterPlaneScript.movePlane(1700);
+
+        // 2. fill the paddock while draining the irrigation water plane
+        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
+        yield return StartCoroutine(paddockScript.AnimateFill());
+
+        // 3. saturate the paddock
+        yield return StartCoroutine(paddockScript.AnimateSaturation());
+
+        // 4. fill the reuse water plane while draining the paddock which leads to overflow due to less storage 
+        StartCoroutine(paddockScript.AnimateDrain());
+        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(1200));
+        overflowParticles.Play();
+
+        // 5. fill the effluent water plane 
+        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
+
+        // 6. Pump some water back to irrigation (effluent + pump rate of reuse) and also indicate some overflow
+        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
+        StartCoroutine(reuseWaterPlaneScript.movePlane(1200 - 150));
+        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(1700 + 150));
+    }
+
+    // Average storage volume with normal weather condition
+    private IEnumerator AnimateLeastStorageConditios()
+    {
+        // 1. fill the irrigation water plane as per the weather condition for which the storage volume is being visualised for 
+        yield return irrigationWaterPlaneScript.movePlane(1700);
+
+        // 2. fill the paddock while draining the irrigation water plane
+        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
+        yield return StartCoroutine(paddockScript.AnimateFill());
+
+        // 3. saturate the paddock
+        yield return StartCoroutine(paddockScript.AnimateSaturation());
+
+        // 4. fill the reuse water plane while draining the paddock  
+        StartCoroutine(paddockScript.AnimateDrain());
+        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(900));
+
+        // 5. fill the effluent water plane 
+        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
+
+        // 6. Pump some water back to irrigation (effluent + pump rate of reuse) and also indicate some overflow
+        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
+        StartCoroutine(reuseWaterPlaneScript.movePlane(900 - 500));
+        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(500 + 100));
+    }
+
+    // Maximum storage volume
+    private IEnumerator AnimateLeastStorageCondition()
+    {
+        // 1. fill the irrigation water plane as per the weather condition for which the storage volume is being visualised for 
+        yield return irrigationWaterPlaneScript.movePlane(1700);
+
+        // 2. fill the paddock while draining the irrigation water plane
+        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
+        yield return StartCoroutine(paddockScript.AnimateFill());
+
+        // 3. saturate the paddock
+        yield return StartCoroutine(paddockScript.AnimateSaturation());
+
+        // 4. fill the reuse water plane while draining the paddock which leads to overflow due to less storage 
+        StartCoroutine(paddockScript.AnimateDrain());
+        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(800));
+
+        // 5. fill the effluent water plane 
+        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(400));
+
+        // 6. Pump some water back to irrigation (effluent + pump rate of reuse) and also indicate some overflow
+        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
+        StartCoroutine(reuseWaterPlaneScript.movePlane(800 - 150));
+        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(1700 + 150));
     }
 }
