@@ -15,6 +15,9 @@ public class AnimatePlane : MonoBehaviour
     // Speed parameter for the animation
     public float animationSpeed = 0.1f;
 
+    // Overflow particle system if applicable
+    public ParticleSystem overflowParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +64,13 @@ public class AnimatePlane : MonoBehaviour
     // Coroutine to animate the plane to a new fill volume
     public IEnumerator movePlane(float newVolume)
     {
+        // turn overflow off
+        if (overflowParticles != null)
+        {
+            overflowParticles.Stop();
+        }
+
+
         // Get the current position of the plane
         Vector3 newLocation = transform.localPosition;
         float currentHeight = newLocation.y;
@@ -81,6 +91,15 @@ public class AnimatePlane : MonoBehaviour
         // Ensure the final position is set
         newLocation.y = targetHeight;
         transform.localPosition = newLocation;
+
+        //If fillVolume is maximised, overflow
+        if (newVolume == fillVolume)
+        {
+            if (overflowParticles != null)
+            {
+                overflowParticles.Play();
+            }
+        }
     }
 
     // Helper method to calculate the percentage of the fill volume
