@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Panner: 1.1133752
+    - _Panner: -0.5
     - _Width: 29.7
     m_Colors: []
   m_BuildTextureStacks: []
