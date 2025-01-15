@@ -26890,7 +26890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a8a6c169abd8440b6aa9805400155b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 1
+  animationSpeed: 0.5
   basePaddockColor: {r: 0.427451, g: 0.54901963, b: 0.2901961, a: 1}
   saturatedPaddockColor: {r: 0.5204319, g: 0.5283019, b: 0.10715558, a: 0.6745098}
 --- !u!1001 &807051347
@@ -52918,7 +52918,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 8000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 3.59e-43, y: NaN, z: NaN, w: 9.619705e-38}
+  m_BoundingSphereOverride: {x: 1.1626349e+27, y: 7.716406e+14, z: 1.556139e+28, w: 2.794639e+20}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

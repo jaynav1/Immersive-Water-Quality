@@ -24,6 +24,10 @@ public class FarmSimulator : MonoBehaviour
     private PaddockIrrigation paddockScript;
     private ParticleSystem overflowParticles;
 
+    private MaterialAnimator reusePipeAnimator;
+    private MaterialAnimator shedPipeAnimator;
+    private MaterialAnimator effluentPipeAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
