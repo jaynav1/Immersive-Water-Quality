@@ -21,7 +21,7 @@ public class PaddockIrrigation : MonoBehaviour
     void Start()
     {
         // Initialize the paddock material and set initial properties
-        paddockMaterial = GetComponent<Renderer>().material;
+        paddockMaterial = GetComponent<Renderer>().sharedMaterial;
         paddockMaterial.SetFloat("_Panner", -3.0f);
         paddockMaterial.SetColor("_Color", basePaddockColor);
     }

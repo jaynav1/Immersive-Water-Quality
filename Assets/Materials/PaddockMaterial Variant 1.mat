@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PipeMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 73b0165a19f2028459ceabdd43d35b9d, type: 3}
+  m_Name: PaddockMaterial Variant 1
+  m_Shader: {fileID: -6465566751694194690, guid: 99e5637d7c79643459ea77c7fa5eb490, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,15 +37,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Panner: -0.028637797
-    - _Power: 0.33
+    - _Panner: 3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Width: 26.9
     m_Colors:
-    - _Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+    - _Colour: {r: 0.42745098, g: 0.5490196, b: 0.29019606, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &2043680432358552953
+--- !u!114 &3278403326985485875
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

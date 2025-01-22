@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Panner: -0.5
+    - _Panner: -0.028637797
     - _Power: 0.29
     - _Width: 30.2
     m_Colors: []

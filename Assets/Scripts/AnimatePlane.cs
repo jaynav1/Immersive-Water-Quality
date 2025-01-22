@@ -9,6 +9,9 @@ public class AnimatePlane : MonoBehaviour
     private const float floorHeight = -9.07f;
     private const float channelBedHeight = -15.75f;
 
+    // Current volume of the plane
+    private float currentVolume = 0.0f;
+
     // Public variable to set the fill volume in the inspector
     public float fillVolume = 0.0f;
 
@@ -38,29 +41,6 @@ public class AnimatePlane : MonoBehaviour
         // No update logic needed for now
     }
 
-    // Public method to animate the plane to a new fill volume
-    public void AnimateFill(float newVolume)
-    {
-        // Exception if the new volume is not positive
-        if (newVolume <= 0)
-        {
-            throw new ArgumentException("New volume must be positive");
-        }
-        // Coroutine to animate the plane to the new fill volume
-        StartCoroutine(movePlane(newVolume));
-    }
-
-    public IEnumerator AnimateFillandWait(float newVolume)
-    {
-        // Exception if the new volume is not positive
-        if (newVolume <= 0)
-        {
-            throw new ArgumentException("New volume must be positive");
-        }
-        // Coroutine to animate the plane to the new fill volume
-        yield return movePlane(newVolume);
-    }
-
     // Coroutine to animate the plane to a new fill volume
     public IEnumerator movePlane(float newVolume)
     {
@@ -69,7 +49,6 @@ public class AnimatePlane : MonoBehaviour
         {
             overflowParticles.Stop();
         }
-
 
         // Get the current position of the plane
         Vector3 newLocation = transform.localPosition;
@@ -91,8 +70,9 @@ public class AnimatePlane : MonoBehaviour
         // Ensure the final position is set
         newLocation.y = targetHeight;
         transform.localPosition = newLocation;
+        currentVolume = newVolume;
 
-        //If fillVolume is maximised, overflow
+        // If fillVolume is maximized, overflow
         if (newVolume == fillVolume)
         {
             if (overflowParticles != null)
@@ -110,5 +90,12 @@ public class AnimatePlane : MonoBehaviour
             return 0;
         }
         return Mathf.Clamp(newVolume / fillVolume, 0f, 1f);
+    }
+
+    // New method to change volume by some amount
+    public IEnumerator ChangeVolumeByAmount(float amount)
+    {
+        currentVolume = Mathf.Clamp(currentVolume + amount, 0, fillVolume);
+        yield return movePlane(currentVolume);
     }
 }
