@@ -172,7 +172,7 @@ Material:
     - _SunSize: 0.04
     - _SunSizeConvergence: 5
     - _Surface: 0
-    - _VerticalErosionWindDisplacement: -189.25244
+    - _VerticalErosionWindDisplacement: -546.1372
     - _VerticalShapeNoiseOffset: 0
     - _VerticalShapeWindDisplacement: 0
     - _WorkflowMode: 1
