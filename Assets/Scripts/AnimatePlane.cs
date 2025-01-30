@@ -72,6 +72,9 @@ public class AnimatePlane : MonoBehaviour
         transform.localPosition = newLocation;
         currentVolume = newVolume;
 
+        // Add debug
+        Debug.Log("volume met");
+
         // If fillVolume is maximized, overflow
         if (newVolume == fillVolume)
         {
@@ -97,5 +100,6 @@ public class AnimatePlane : MonoBehaviour
     {
         currentVolume = Mathf.Clamp(currentVolume + amount, 0, fillVolume);
         yield return movePlane(currentVolume);
+        Debug.Log("Volume changed");
     }
 }

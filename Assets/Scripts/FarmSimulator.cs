@@ -11,11 +11,14 @@ public class FarmSimulator : MonoBehaviour
     public GameObject effluentWaterPlane;
     public GameObject paddock;
     public GameObject overflow;
+    public GameObject reusePipe;
+    public GameObject shedPipe;
+    public GameObject effluentPipe;
 
     // Pipe materials
-    public Material reusePipe;
-    public Material shedPipe;
-    public Material effluentPipe;
+    private Material reusePipeMaterial;
+    private Material shedPipeMaterial;
+    private Material effluentPipeMaterial;
 
     // Animation variables
     private AnimatePlane irrigationWaterPlaneScript;
@@ -39,10 +42,15 @@ public class FarmSimulator : MonoBehaviour
         overflowParticles = overflow.GetComponent<ParticleSystem>();
         overflowParticles.Stop();
 
+        //Get materials from pipes and create instances
+        reusePipeMaterial = reusePipe.GetComponent<Renderer>().material;
+        shedPipeMaterial = shedPipe.GetComponent<Renderer>().material;
+        effluentPipeMaterial = effluentPipe.GetComponent<Renderer>().material;
+
         // Initialize material animators
-        reusePipeAnimator = new MaterialAnimator(reusePipe, "_Panner");
-        shedPipeAnimator = new MaterialAnimator(shedPipe, "_Panner");
-        effluentPipeAnimator = new MaterialAnimator(effluentPipe, "_Panner");
+        reusePipeAnimator = new MaterialAnimator(reusePipeMaterial, "_Panner");
+        shedPipeAnimator = new MaterialAnimator(shedPipeMaterial, "_Panner");
+        effluentPipeAnimator = new MaterialAnimator(effluentPipeMaterial, "_Panner");
 
         // Start the animation for the desired scenario
         StartCoroutine(AnimateNormalWeather());
@@ -59,10 +67,11 @@ public class FarmSimulator : MonoBehaviour
         // Use multiple subroutines to animate the farm
         while (true)
         {
-            // 1. fill the irrigation water plane
-            //reusePipeAnimator.StartAnimation(this);
+            
+            // 1. fill the irrigation water plane while stopping reuse
             yield return irrigationWaterPlaneScript.ChangeVolumeByAmount(1700);
-            //reusePipeAnimator.StopAnimation(this);
+            reusePipeAnimator.StopAnimation(this);
+            effluentPipeAnimator.StopAnimation(this);
 
             // 2. fill the paddock while draining the irrigation water plane
             StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
@@ -83,13 +92,12 @@ public class FarmSimulator : MonoBehaviour
             // 6. Pump water back to irrigation (effluent + pump rate of reuse)
 
             StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-            StartCoroutine(reuseWaterPlaneScript.movePlane(-500));
+            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-500));
             reusePipeAnimator.StartAnimation(this);
             effluentPipeAnimator.StartAnimation(this);
             //overflowParticles.Stop();
             yield return StartCoroutine(irrigationWaterPlaneScript.ChangeVolumeByAmount(600));
-            reusePipeAnimator.StopAnimation(this);
-            effluentPipeAnimator.StopAnimation(this);
+            Debug.Log("animations stopped.");
         }
         
     }
