@@ -29,6 +29,7 @@ public class PaddockIrrigation : MonoBehaviour
     // Coroutine to animate the filling of the paddock
     public IEnumerator AnimateFill()
     {
+        paddockMaterial.SetColor("_Color", basePaddockColor);
         yield return AnimatePanner(-3.0f, 0.0f);
         currentState = PaddockState.Full;
     }
@@ -43,9 +44,11 @@ public class PaddockIrrigation : MonoBehaviour
     // Coroutine to animate the saturation of the paddock
     public IEnumerator AnimateSaturation()
     {
-        if (currentState != PaddockState.Full) yield break;
+        //if (currentState != PaddockState.Full) yield break;
+        Debug.Log("Changing colour");
         yield return AnimateColor(basePaddockColor, saturatedPaddockColor);
         currentState = PaddockState.Saturated;
+        Debug.Log("Colour changed");
     }
 
     // Private method to animate the panner property of the material

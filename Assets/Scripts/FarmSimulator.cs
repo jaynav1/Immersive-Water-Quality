@@ -69,7 +69,7 @@ public class FarmSimulator : MonoBehaviour
         {
             
             // 1. fill the irrigation water plane while stopping reuse
-            yield return irrigationWaterPlaneScript.ChangeVolumeByAmount(1700);
+            yield return irrigationWaterPlaneScript.ChangeVolumeByAmount(500);
             reusePipeAnimator.StopAnimation(this);
             effluentPipeAnimator.StopAnimation(this);
 
@@ -82,7 +82,7 @@ public class FarmSimulator : MonoBehaviour
 
             // 4. fill the reuse water plane while draining the paddock and no overflow due to sufficient storage
             StartCoroutine(paddockScript.AnimateDrain());
-            yield return StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(1000));
+            yield return StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(1700));
 
             // 5. fill the effluent water plane
             shedPipeAnimator.StartAnimation(this);
@@ -92,12 +92,11 @@ public class FarmSimulator : MonoBehaviour
             // 6. Pump water back to irrigation (effluent + pump rate of reuse)
 
             StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-500));
+            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-1500));
             reusePipeAnimator.StartAnimation(this);
             effluentPipeAnimator.StartAnimation(this);
             //overflowParticles.Stop();
-            yield return StartCoroutine(irrigationWaterPlaneScript.ChangeVolumeByAmount(600));
-            Debug.Log("animations stopped.");
+            yield return StartCoroutine(irrigationWaterPlaneScript.ChangeVolumeByAmount(1000));
         }
         
     }
