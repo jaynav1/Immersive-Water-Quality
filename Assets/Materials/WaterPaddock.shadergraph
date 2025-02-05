@@ -2314,7 +2314,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.1200000047683716,
+    "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -2394,7 +2394,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 3.430000066757202,
+    "m_Value": 6.150000095367432,
     "m_DefaultValue": 10.0,
     "m_Labels": []
 }

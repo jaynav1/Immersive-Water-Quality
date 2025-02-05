@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FarmSimulator : MonoBehaviour
 {
+
     // Public variables for the game objects
     public GameObject irrigationWaterPlane;
     public GameObject reuseWaterPlane;
@@ -31,6 +32,8 @@ public class FarmSimulator : MonoBehaviour
     private MaterialAnimator shedPipeAnimator;
     private MaterialAnimator effluentPipeAnimator;
 
+    private CowFactory cowFactory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +54,15 @@ public class FarmSimulator : MonoBehaviour
         reusePipeAnimator = new MaterialAnimator(reusePipeMaterial, "_Panner");
         shedPipeAnimator = new MaterialAnimator(shedPipeMaterial, "_Panner");
         effluentPipeAnimator = new MaterialAnimator(effluentPipeMaterial, "_Panner");
+        
+        //Cow factory
+        cowFactory = GetComponent<CowFactory>();
 
+        if (cowFactory != null)
+        {
+            cowFactory.SpawnCows();
+        }
+        
         // Start the animation for the desired scenario
         StartCoroutine(AnimateNormalWeather());
     }
@@ -284,6 +295,22 @@ public class FarmSimulator : MonoBehaviour
         reusePipeAnimator.StopAnimation(this);
         shedPipeAnimator.StopAnimation(this);
         effluentPipeAnimator.StopAnimation(this);
+    }
+
+    // Method to get a random point on the plane
+    public Vector3 GetRandomPointOnPlane(GameObject plane)
+    {
+        // Get the plane's mesh renderer bounds
+        Bounds planeBounds = plane.GetComponent<MeshRenderer>().bounds;
+        
+        // Generate random point within bounds
+        float randomX = Random.Range(planeBounds.min.x, planeBounds.max.x);
+        float randomZ = Random.Range(planeBounds.min.z, planeBounds.max.z);
+        
+        // Use the plane's Y position
+        float planeY = plane.transform.position.y;
+        
+        return new Vector3(randomX, planeY, randomZ);
     }
 }
 
