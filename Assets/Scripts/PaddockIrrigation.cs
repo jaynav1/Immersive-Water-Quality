@@ -22,7 +22,8 @@ public class PaddockIrrigation : MonoBehaviour
     {
         // Initialize the paddock material and set initial properties
         paddockMaterial = GetComponent<Renderer>().sharedMaterial;
-        paddockMaterial.SetFloat("_Panner", -3.0f);
+        paddockMaterial.SetFloat("_Panner", 0.0f);
+        paddockMaterial.SetInteger("_Drain", 0);
         paddockMaterial.SetColor("_Color", basePaddockColor);
     }
 
@@ -30,14 +31,16 @@ public class PaddockIrrigation : MonoBehaviour
     public IEnumerator AnimateFill()
     {
         paddockMaterial.SetColor("_Color", basePaddockColor);
-        yield return AnimatePanner(-3.0f, 0.0f);
+        paddockMaterial.SetFloat("_Drain", 0.0f);
+        yield return AnimatePanner(0.0f, 2.0f);
         currentState = PaddockState.Full;
     }
 
     // Coroutine to animate the draining of the paddock
     public IEnumerator AnimateDrain()
     {
-        yield return AnimatePanner(0.0f, 3.0f);
+        paddockMaterial.SetFloat("_Drain", 1.0f);
+        yield return AnimatePanner(2.0f, 0.0f);
         currentState = PaddockState.Empty;
     }
 

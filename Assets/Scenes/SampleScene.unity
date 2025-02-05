@@ -14368,9 +14368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a8a6c169abd8440b6aa9805400155b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 1
+  animationSpeed: 0.5
   basePaddockColor: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
-  saturatedPaddockColor: {r: 0.49411765, g: 0.33333334, b: 0.25490198, a: 1}
+  saturatedPaddockColor: {r: 0.50980395, g: 0.40392157, b: 0.3137255, a: 1}
 --- !u!64 &549928725
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22062,7 +22062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationSpeed: 0.5
   basePaddockColor: {r: 0.427451, g: 0.54901963, b: 0.2901961, a: 1}
-  saturatedPaddockColor: {r: 0.49056602, g: 0.3302275, b: 0.25222498, a: 1}
+  saturatedPaddockColor: {r: 0.50980395, g: 0.40392157, b: 0.3137255, a: 1}
 --- !u!1001 &807051347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23908,7 +23908,7 @@ Transform:
   m_GameObject: {fileID: 867568673}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.54, y: -15.75, z: 8.774}
+  m_LocalPosition: {x: 44.54, y: -10.13, z: 8.774}
   m_LocalScale: {x: 2.6134, y: 1, z: 13.576971}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30520,7 +30520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1166389981
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -44895,7 +44895,7 @@ Transform:
   m_GameObject: {fileID: 1429512731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -77.05, y: -15.3, z: -5.5}
+  m_LocalPosition: {x: -77.05, y: -15.1, z: -5.5}
   m_LocalScale: {x: 1.8, y: 1, z: 13.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46375,7 +46375,7 @@ Transform:
   m_GameObject: {fileID: 1479440818}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.3, y: -15.75, z: 39}
+  m_LocalPosition: {x: 21.3, y: -9.2, z: 39}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -49766,9 +49766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a8a6c169abd8440b6aa9805400155b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 1
+  animationSpeed: 0.5
   basePaddockColor: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
-  saturatedPaddockColor: {r: 0.49411765, g: 0.33333334, b: 0.25490198, a: 1}
+  saturatedPaddockColor: {r: 0.50980395, g: 0.40392157, b: 0.3137255, a: 1}
 --- !u!64 &1638932034
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52809,11 +52809,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2722370069008267612, guid: 25627707ca8d60c4ab51df5fb1a901b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.9369698
+      value: -8.6
       objectReference: {fileID: 0}
     - target: {fileID: 2722370069008267612, guid: 25627707ca8d60c4ab51df5fb1a901b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55.4
+      value: 52.5
       objectReference: {fileID: 0}
     - target: {fileID: 2722370069008267612, guid: 25627707ca8d60c4ab51df5fb1a901b4, type: 3}
       propertyPath: m_LocalRotation.w
