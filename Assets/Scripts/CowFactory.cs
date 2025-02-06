@@ -11,6 +11,9 @@ public class CowFactory : MonoBehaviour
     public GameObject cowSpawnPlane;
     public GameObject paddockPlane;
 
+    //Materials to choose from
+    public Material[] materials;
+
     //Dict of cows
     private Dictionary<GameObject, Vector3> cows = new Dictionary<GameObject, Vector3>();
 
@@ -60,6 +63,9 @@ public class CowFactory : MonoBehaviour
 
             // Reset local scale
             newCow.transform.localScale = Vector3.one;
+
+            //Set main material of cow
+            newCow.GetComponentInChildren<SkinnedMeshRenderer>().material = materials[Random.Range(0, materials.Length)];
 
             // Rotate cow 90 degrees
             newCow.transform.Rotate(Vector3.up, -90f);

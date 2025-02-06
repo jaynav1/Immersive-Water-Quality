@@ -86,20 +86,12 @@ public class FarmSimulator : MonoBehaviour
             StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
             yield return StartCoroutine(paddockScript.AnimateFill());
 
-            // Try to move cows to paddock
-            if (cowFactory != null)
-            {
-                yield return cowFactory.MoveToPlane(paddock);
-            }
+            yield return cowFactory.MoveToPlane(paddock);
 
             // 3. saturate the paddock
             yield return StartCoroutine(paddockScript.AnimateSaturation());
 
-            // Try to move cows back to spawn plane
-            if (cowFactory != null)
-            {
-                yield return cowFactory.ReturnCows();
-            }
+            yield return cowFactory.ReturnCows();
 
             // 4. fill the reuse water plane while draining the paddock and no overflow due to sufficient storage
             StartCoroutine(paddockScript.AnimateDrain());

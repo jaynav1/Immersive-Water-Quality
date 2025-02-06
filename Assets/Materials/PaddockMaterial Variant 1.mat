@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Drain: 0
-    - _Panner: 0.028898599
+    - _Panner: 2
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
