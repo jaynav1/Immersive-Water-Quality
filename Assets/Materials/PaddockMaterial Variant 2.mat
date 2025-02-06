@@ -37,12 +37,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Drain: 1
-    - _Panner: 1.1971707
+    - _Drain: 0
+    - _Panner: 0.3504613
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0.50980395, g: 0.40392157, b: 0.3137255, a: 1}
+    - _Color: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
     - _Colour: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4552442415422551722

@@ -11,22 +11,18 @@ public class CowFactory : MonoBehaviour
     public GameObject cowSpawnPlane;
     public GameObject paddockPlane;
 
-    //list of cows
-    private List<GameObject> cows = new List<GameObject>();
-
+    //Dict of cows
+    private Dictionary<GameObject, Vector3> cows = new Dictionary<GameObject, Vector3>();
 
     // Start is called before the first frame update
     void Start()
     {
-        // Spawn cows evenly along the cowSpawnPlane
-
-
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {   
+
     }
 
     private Vector3 GetRandomPointOnPlane(GameObject plane)
@@ -47,7 +43,7 @@ public class CowFactory : MonoBehaviour
     public void SpawnCows()
     {
         // Clear existing cows
-        foreach (GameObject cow in cows)
+        foreach (var cow in cows.Keys)
         {
             Destroy(cow);
         }
@@ -60,25 +56,32 @@ public class CowFactory : MonoBehaviour
             GameObject newCow = Instantiate(cowPrefab, randomPoint, Quaternion.identity);
             
             // Set the parent of the new cow to be the same as the parent of this script
-            newCow.transform.SetParent(transform.parent);
-            
-            cows.Add(newCow);
+            newCow.transform.SetParent(transform);
+
+            // Reset local scale
+            newCow.transform.localScale = Vector3.one;
+
+            // Rotate cow 90 degrees
+            newCow.transform.Rotate(Vector3.up, -90f);
+
+            cows.Add(newCow, randomPoint);
         }
     }
 
     public IEnumerator MoveToPlane(GameObject plane)
     {
         // Move cows to new plane
-        foreach (GameObject cow in cows)
+        foreach (GameObject cow in cows.Keys)
         {
             // Get agent of Cow
-            NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
+            IdleAnim idleAnim = cow.GetComponent<IdleAnim>();
             
             // Get random point on new plane
             Vector3 randomPoint = GetRandomPointOnPlane(plane);
 
             // Move cow to random point
-            agent.SetDestination(randomPoint);
+            //StartCoroutine(idleAnim.RotateAndMove(randomPoint));
+            cow.GetComponent<NavMeshAgent>().SetDestination(randomPoint);
         }
 
         // Check if all cows have reached their destination
@@ -88,7 +91,42 @@ public class CowFactory : MonoBehaviour
         {
             allReached = true;
 
-            foreach (GameObject cow in cows)
+            foreach (GameObject cow in cows.Keys)
+            {
+                NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
+
+                if (agent.pathPending || agent.remainingDistance > agent.stoppingDistance || agent.velocity.sqrMagnitude != 0f)
+                {
+                    allReached = false;
+                    break;
+                }
+            }
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator ReturnCows()
+    {
+        // Move cows to start point
+        foreach ((GameObject cow, Vector3 spawnPoint) in cows)
+        {
+            // Get agent of Cow
+            IdleAnim idleAnim = cow.GetComponent<IdleAnim>();
+            
+            // Move cow to spawn point
+            //StartCoroutine(idleAnim.RotateAndMove(spawnPoint));
+            cow.GetComponent<NavMeshAgent>().SetDestination(spawnPoint);
+        }
+
+        // Check if all cows have reached their destination
+        bool allReached = false;
+
+        while (!allReached)
+        {
+            allReached = true;
+
+            foreach (GameObject cow in cows.Keys)
             {
                 NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
 
