@@ -20,6 +20,10 @@ public class AnimatePlane : MonoBehaviour
 
     // Overflow particle system if applicable
     public ParticleSystem overflowParticles;
+    public GameObject overflowPlane;
+
+    // Overflow irrigation script
+    private OverflowIrrigation overflowIrrigation;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +37,12 @@ public class AnimatePlane : MonoBehaviour
         Vector3 newLocation = transform.localPosition;
         newLocation.y = Mathf.Lerp(channelBedHeight, floorHeight, 0);
         transform.localPosition = newLocation;
+
+        // Get the OverflowIrrigation script from the overflow plane
+        if (overflowPlane != null)
+        {
+            overflowIrrigation = overflowPlane.GetComponent<OverflowIrrigation>();
+        }
     }
 
     // Update is called once per frame
@@ -48,6 +58,11 @@ public class AnimatePlane : MonoBehaviour
         if (overflowParticles != null)
         {
             overflowParticles.Stop();
+        }
+
+        if (overflowIrrigation != null)
+        {
+            StartCoroutine(overflowIrrigation.StopOverflow());
         }
 
         // Get the current position of the plane
@@ -78,6 +93,11 @@ public class AnimatePlane : MonoBehaviour
             if (overflowParticles != null)
             {
                 overflowParticles.Play();
+            }
+
+            if (overflowIrrigation != null)
+            {
+                StartCoroutine(overflowIrrigation.StartOverflow());
             }
         }
     }
