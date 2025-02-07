@@ -12154,6 +12154,7 @@ GameObject:
   - component: {fileID: 458549054}
   - component: {fileID: 458549053}
   - component: {fileID: 458549052}
+  - component: {fileID: 458549056}
   m_Layer: 0
   m_Name: OverflowWater
   m_TagString: Untagged
@@ -12263,6 +12264,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458549050}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &458549056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458549050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781157b9110651a4eaeeb97e9c94d0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 0.5
+  overflowColor: {r: 0.50980395, g: 0.40392157, b: 0.3137255, a: 1}
 --- !u!1 &471479206
 GameObject:
   m_ObjectHideFlags: 0
@@ -35852,7 +35867,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.12589, g: 0.38679248, b: 0.12798336, a: 1}
+      maxColor: {r: 0.58431375, g: 0.4, b: 0.23529412, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -47348,7 +47363,7 @@ MonoBehaviour:
   fillVolume: 2000
   animationSpeed: 1
   overflowParticles: {fileID: 1183400715}
-  overflowPlane: {fileID: 0}
+  overflowPlane: {fileID: 2143377343}
 --- !u!64 &1509263323
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50984,7 +50999,7 @@ MonoBehaviour:
   fillVolume: 1000
   animationSpeed: 1
   overflowParticles: {fileID: 2007240436}
-  overflowPlane: {fileID: 0}
+  overflowPlane: {fileID: 458549050}
 --- !u!64 &1701229629
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55119,7 +55134,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.12589, g: 0.38679248, b: 0.12798336, a: 1}
+      maxColor: {r: 0.5849056, g: 0.3986691, b: 0.23451404, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -62245,7 +62260,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.12589, g: 0.38679248, b: 0.12798336, a: 1}
+      maxColor: {r: 0.58431375, g: 0.4, b: 0.23529412, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -70106,6 +70121,7 @@ GameObject:
   - component: {fileID: 2143377347}
   - component: {fileID: 2143377346}
   - component: {fileID: 2143377345}
+  - component: {fileID: 2143377349}
   m_Layer: 0
   m_Name: OverflowWater
   m_TagString: Untagged
@@ -70215,6 +70231,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143377343}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2143377349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143377343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781157b9110651a4eaeeb97e9c94d0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 0.5
+  overflowColor: {r: 0.50980395, g: 0.40392157, b: 0.3137255, a: 1}
 --- !u!1001 &809155337852496227
 PrefabInstance:
   m_ObjectHideFlags: 0

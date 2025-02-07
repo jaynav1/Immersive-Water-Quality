@@ -60,11 +60,6 @@ public class AnimatePlane : MonoBehaviour
             overflowParticles.Stop();
         }
 
-        if (overflowIrrigation != null)
-        {
-            StartCoroutine(overflowIrrigation.StopOverflow());
-        }
-
         // Get the current position of the plane
         Vector3 newLocation = transform.localPosition;
         float currentHeight = newLocation.y;
