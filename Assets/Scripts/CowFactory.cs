@@ -42,15 +42,21 @@ public class CowFactory : MonoBehaviour
         
         return new Vector3(randomX, planeY, randomZ);
     }
-
-    public void SpawnCows()
+   
+    public void DestroyCows()
     {
-        // Clear existing cows
-        foreach (var cow in cows.Keys)
+        // Destroy all cows
+        foreach (GameObject cow in cows.Keys)
         {
             Destroy(cow);
         }
+
         cows.Clear();
+    }
+
+    public void SpawnCows()
+    {
+        DestroyCows();
 
         // Spawn new cows
         for (int i = 0; i < cowCount; i++)
@@ -92,6 +98,7 @@ public class CowFactory : MonoBehaviour
 
         // Check if all cows have reached their destination
         bool allReached = false;
+        float tolerance = 0.01f;
 
         while (!allReached)
         {
@@ -101,7 +108,7 @@ public class CowFactory : MonoBehaviour
             {
                 NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
 
-                if (agent.pathPending || agent.remainingDistance > agent.stoppingDistance || agent.velocity.sqrMagnitude != 0f)
+                if (agent.remainingDistance > tolerance)
                 {
                     allReached = false;
                     break;
@@ -127,6 +134,7 @@ public class CowFactory : MonoBehaviour
 
         // Check if all cows have reached their destination
         bool allReached = false;
+        float tolerance = 0.5f;
 
         while (!allReached)
         {
@@ -136,7 +144,7 @@ public class CowFactory : MonoBehaviour
             {
                 NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
 
-                if (agent.pathPending || agent.remainingDistance > agent.stoppingDistance || agent.velocity.sqrMagnitude != 0f)
+                if (agent.remainingDistance > tolerance)
                 {
                     allReached = false;
                     break;

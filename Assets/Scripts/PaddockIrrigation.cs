@@ -48,10 +48,17 @@ public class PaddockIrrigation : MonoBehaviour
     public IEnumerator AnimateSaturation()
     {
         //if (currentState != PaddockState.Full) yield break;
-        Debug.Log("Changing colour");
         yield return AnimateColor(basePaddockColor, saturatedPaddockColor);
         currentState = PaddockState.Saturated;
-        Debug.Log("Colour changed");
+    }
+
+    // Public method to reset the paddock state
+    public void Reset()
+    {
+        currentState = PaddockState.Empty;
+        paddockMaterial.SetFloat("_Panner", 0.0f);
+        paddockMaterial.SetFloat("_Drain", 0.0f);
+        paddockMaterial.SetColor("_Color", basePaddockColor);
     }
 
     // Private method to animate the panner property of the material

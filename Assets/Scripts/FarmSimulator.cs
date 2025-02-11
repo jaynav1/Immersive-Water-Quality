@@ -287,7 +287,28 @@ public class FarmSimulator : MonoBehaviour
         reusePipeAnimator.StopAnimation(this);
         effluentPipeAnimator.StopAnimation(this);
     }
-    
+
+    public void Reset()
+    {
+        cowFactory.DestroyCows();
+
+        irrigationWaterPlaneScript.Reset();
+        reuseWaterPlaneScript.Reset();
+        effluentWaterPlaneScript.Reset();
+        paddockScript.Reset();
+        overflowParticles.Stop();
+
+        reusePipeAnimator.StopAnimation(this);
+        shedPipeAnimator.StopAnimation(this);
+        effluentPipeAnimator.StopAnimation(this);
+
+        StopAllCoroutines();
+
+        cowFactory.SpawnCows();
+
+        StartCoroutine(AnimateNormalWeather());
+    }
+
     private IEnumerator TestMaterialAnimation()
     {
         reusePipeAnimator.StartAnimation(this);

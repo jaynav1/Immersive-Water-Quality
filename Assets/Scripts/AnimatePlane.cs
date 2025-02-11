@@ -97,6 +97,24 @@ public class AnimatePlane : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        currentVolume = 0.0f;
+        Vector3 newLocation = transform.localPosition;
+        newLocation.y = Mathf.Lerp(channelBedHeight, floorHeight, 0);
+        transform.localPosition = newLocation;
+
+        if (overflowParticles != null)
+        {
+            overflowParticles.Stop();
+        }
+
+        if (overflowIrrigation != null)
+        {
+            overflowIrrigation.StopOverflow();
+        }
+    }
+
     // Helper method to calculate the percentage of the fill volume
     private float getPercentage(float newVolume)
     {
