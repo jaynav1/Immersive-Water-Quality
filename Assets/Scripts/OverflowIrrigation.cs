@@ -9,6 +9,7 @@ public class OverflowIrrigation : MonoBehaviour
     public Color overflowColor;
 
     private Material material;
+    private bool isOverflowing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +29,24 @@ public class OverflowIrrigation : MonoBehaviour
 
     public IEnumerator StartOverflow()
     {
-        material.SetFloat("_Drain", 0f);
-        yield return AnimatePanner(0f, 2f);
+        if (!isOverflowing)
+        {
+            Debug.Log("Start Overflow in coroutine");
+            isOverflowing = true;
+            material.SetFloat("_Drain", 0f);
+            yield return AnimatePanner(0f, 2f);
+        }
     }
 
     public IEnumerator StopOverflow()
     {
-        material.SetFloat("_Drain", 1f);
-        yield return AnimatePanner(2f, 0f);
+        if (isOverflowing)
+        {
+            Debug.Log("Stop Overflow in coroutine");
+            material.SetFloat("_Drain", 1f);
+            isOverflowing = false;
+            yield return AnimatePanner(2f, 0f);
+        }
     }
 
     private IEnumerator AnimatePanner(float initialPanner, float targetPanner)

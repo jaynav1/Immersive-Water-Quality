@@ -54,7 +54,10 @@ public class AnimatePlane : MonoBehaviour
     // Coroutine to animate the plane to a new fill volume
     public IEnumerator movePlane(float newVolume)
     {
-        // turn overflow off
+        // Define a small tolerance value
+        float tolerance = 0.1f;
+
+        // Turn overflow off
         if (newVolume < fillVolume)
         {
             if (overflowParticles != null)
@@ -64,6 +67,7 @@ public class AnimatePlane : MonoBehaviour
 
             if (overflowIrrigation != null)
             {
+                Debug.Log("Stopping overflow");
                 StartCoroutine(overflowIrrigation.StopOverflow());
             }
         }
@@ -91,7 +95,7 @@ public class AnimatePlane : MonoBehaviour
         currentVolume = newVolume;
 
         // If fillVolume is maximized, overflow
-        if (newVolume == fillVolume)
+        if (Mathf.Abs(newVolume - fillVolume) < tolerance)
         {
             if (overflowParticles != null)
             {
