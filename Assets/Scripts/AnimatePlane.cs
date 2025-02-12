@@ -55,9 +55,17 @@ public class AnimatePlane : MonoBehaviour
     public IEnumerator movePlane(float newVolume)
     {
         // turn overflow off
-        if (overflowParticles != null)
+        if (newVolume < fillVolume)
         {
-            overflowParticles.Stop();
+            if (overflowParticles != null)
+            {
+                overflowParticles.Stop();
+            }
+
+            if (overflowIrrigation != null)
+            {
+                StartCoroutine(overflowIrrigation.StopOverflow());
+            }
         }
 
         // Get the current position of the plane

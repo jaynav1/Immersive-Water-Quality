@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.XR.ARSubsystems;
 
 public class FarmSimulator : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class FarmSimulator : MonoBehaviour
     private MaterialAnimator effluentPipeAnimator;
 
     private CowFactory cowFactory;
+    
+    private int currentScenario = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +66,7 @@ public class FarmSimulator : MonoBehaviour
         }
         
         // Start the animation for the desired scenario
-        StartCoroutine(AnimateNormalWeather());
+        StartCoroutine(ChooseScenario(currentScenario));
     }
 
     // Update is called once per frame
@@ -304,10 +308,47 @@ public class FarmSimulator : MonoBehaviour
 
         StopAllCoroutines();
 
-        cowFactory.SpawnCows();
+        //get any renderer
+        Renderer renderer = paddock.GetComponent<Renderer>();
 
-        StartCoroutine(AnimateNormalWeather());
+        //If renderer is enabled
+        if (renderer.enabled)
+        {
+            cowFactory.SpawnCows();
+        }
+
+        StartCoroutine(ChooseScenario(currentScenario));
     }
+
+    public void SetScenario(int newScenario)
+    {
+        currentScenario = newScenario;
+    }
+
+    private IEnumerator ChooseScenario(int value)
+    {
+        if (value == 0)
+        {
+            return AnimateNormalWeather();
+        }
+        else if (value == 1)
+        {
+            return AnimateHeavyRainfall();
+        }
+        else if (value == 2)
+        {
+            return AnimateDroughtConditions();
+        }
+        else if (value == 3)
+        {
+            return AnimateLeastStorageConditions();
+        }
+        else
+        {
+            return AnimateNormalWeather();
+        }
+    } 
+        
 
     private IEnumerator TestMaterialAnimation()
     {

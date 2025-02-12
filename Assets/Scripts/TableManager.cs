@@ -4,20 +4,23 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TablePosition : MonoBehaviour
+public class TableManager : MonoBehaviour
 {
     private bool farmMode;
     private int currentFarm;
+    private int currentScenario;
+    private ParticleSystem rain;
 
     // Table objects
     public GameObject smallTable;
     public GameObject table;
     public GameObject bigTable;
+    public GameObject rainObject;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rain = rainObject.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -38,16 +41,33 @@ public class TablePosition : MonoBehaviour
         UpdateTables();
     }
 
+    public void SetScenario(int newScenario)
+    {
+        currentScenario = newScenario;
+
+        // hardcoded logic to toggle rain
+        if (currentScenario == 0)
+        {
+            rain.Stop();
+        } 
+        else
+        {
+            rain.Play();
+        }
+        UpdateTables();
+    }
+
     private void ResetTable(GameObject table)
     {
         FarmSimulator simulator = table.GetComponent<FarmSimulator>();
         if (simulator != null)
         {
+            simulator.SetScenario(currentScenario);
             simulator.Reset();
         }
     }
 
-    private void ResetAllTables()
+    public void ResetAllTables()
     {
         ResetTable(smallTable);
         ResetTable(table);
@@ -60,30 +80,30 @@ public class TablePosition : MonoBehaviour
         {
             if (currentFarm == 0)
             {
-                ResetTable(smallTable);
-
                 SetTableVisibility(smallTable, true);
                 SetTableVisibility(table, false);
                 SetTableVisibility(bigTable, false);
+                
+                
+                ResetTable(smallTable);
 
                 //smallTable.transform.localPosition = 3 * Vector3.left + 2 * Vector3.down;
             }
             else if (currentFarm == 1)
             {
-                ResetTable(table);
-
                 SetTableVisibility(smallTable, false);
                 SetTableVisibility(table, true);
                 SetTableVisibility(bigTable, false);
+
+                ResetTable(table);
             }
             else if (currentFarm == 2)
             {
-                ResetTable(bigTable);
-
                 SetTableVisibility(smallTable, false);
                 SetTableVisibility(table, false);
                 SetTableVisibility(bigTable, true);
 
+                ResetTable(bigTable);
                 //bigTable.transform.localPosition = 3 * Vector3.right + 2 * Vector3.down;
             }
         }
@@ -95,6 +115,7 @@ public class TablePosition : MonoBehaviour
             SetTableVisibility(smallTable, true);
             SetTableVisibility(table, true);
             SetTableVisibility(bigTable, true);
+            ResetAllTables();
         }
     }
 
