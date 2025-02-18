@@ -38,9 +38,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _Drain: 0
-    - _Panner: 2
+    - _Panner: 1.5046396
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReuseOffset: 1.02
     m_Colors:
     - _Color: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
     - _Colour: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}

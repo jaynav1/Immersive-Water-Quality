@@ -45,6 +45,7 @@ Material:
     - _Panner: 2
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReuseOffset: 0.68
     m_Colors:
     - _Color: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
     - _Colour: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
