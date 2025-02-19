@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PaddockMaterial Variant 2
-  m_Shader: {fileID: -6465566751694194690, guid: 7154d1f807139804f87895bf9bf86445, type: 3}
+  m_Name: WaterMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 37fe7b49c0f55b548b6d40c902627f40, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,16 +37,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Drain: 0
-    - _Panner: 2
+    - _Concentration: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReuseOffset: 1.02
-    m_Colors:
-    - _Color: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
-    - _Colour: {r: 0.42745098, g: 0.54901963, b: 0.2901961, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &4552442415422551722
+--- !u!114 &386965780839281853
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

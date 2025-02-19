@@ -27,6 +27,7 @@ public class OverflowIrrigation : MonoBehaviour
         
     }
 
+    // Coroutine to animate the overflow
     public IEnumerator StartOverflow()
     {
         if (!isOverflowing)
@@ -38,6 +39,8 @@ public class OverflowIrrigation : MonoBehaviour
         }
     }
 
+
+    // Coroutine to stop the overflow
     public IEnumerator StopOverflow()
     {
         if (isOverflowing)
@@ -49,6 +52,8 @@ public class OverflowIrrigation : MonoBehaviour
         }
     }
 
+
+    // Coroutine to animate the panner value
     private IEnumerator AnimatePanner(float initialPanner, float targetPanner)
     {
         float elapsedTime = 0f;

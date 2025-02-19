@@ -86,14 +86,13 @@ public class CowFactory : MonoBehaviour
         foreach (GameObject cow in cows.Keys)
         {
             // Get agent of Cow
-            IdleAnim idleAnim = cow.GetComponent<IdleAnim>();
-            
+            NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
+
             // Get random point on new plane
             Vector3 randomPoint = GetRandomPointOnPlane(plane);
 
             // Move cow to random point
-            //StartCoroutine(idleAnim.RotateAndMove(randomPoint));
-            cow.GetComponent<NavMeshAgent>().SetDestination(randomPoint);
+            agent.SetDestination(randomPoint);
         }
 
         // Check if all cows have reached their destination
@@ -108,7 +107,7 @@ public class CowFactory : MonoBehaviour
             {
                 NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
 
-                if (agent.remainingDistance > tolerance)
+                if (agent.pathPending || agent.remainingDistance > tolerance)
                 {
                     allReached = false;
                     break;
@@ -125,11 +124,10 @@ public class CowFactory : MonoBehaviour
         foreach ((GameObject cow, Vector3 spawnPoint) in cows)
         {
             // Get agent of Cow
-            IdleAnim idleAnim = cow.GetComponent<IdleAnim>();
-            
+            NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
+
             // Move cow to spawn point
-            //StartCoroutine(idleAnim.RotateAndMove(spawnPoint));
-            cow.GetComponent<NavMeshAgent>().SetDestination(spawnPoint);
+            agent.SetDestination(spawnPoint);
         }
 
         // Check if all cows have reached their destination
@@ -144,7 +142,7 @@ public class CowFactory : MonoBehaviour
             {
                 NavMeshAgent agent = cow.GetComponent<NavMeshAgent>();
 
-                if (agent.remainingDistance > tolerance)
+                if (agent.pathPending || agent.remainingDistance > tolerance)
                 {
                     allReached = false;
                     break;

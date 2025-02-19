@@ -292,6 +292,7 @@ public class FarmSimulator : MonoBehaviour
         effluentPipeAnimator.StopAnimation(this);
     }
 
+    // Reset the farm simulator to the initial state
     public void Reset()
     {
         cowFactory.DestroyCows();
@@ -317,6 +318,7 @@ public class FarmSimulator : MonoBehaviour
             cowFactory.SpawnCows();
         }
 
+        //Restart the chosen scenario
         StartCoroutine(ChooseScenario(currentScenario));
     }
 
@@ -325,6 +327,7 @@ public class FarmSimulator : MonoBehaviour
         currentScenario = newScenario;
     }
 
+    // Method to choose the scenario based on the value
     private IEnumerator ChooseScenario(int value)
     {
         if (value == 0)
@@ -378,6 +381,8 @@ public class FarmSimulator : MonoBehaviour
     }
 }
 
+
+// MaterialAnimator class to animate material properties
 public class MaterialAnimator
 {
     private Material material;

@@ -41,6 +41,7 @@ public class TableManager : MonoBehaviour
         UpdateTables();
     }
 
+    // Set the scenario for the tables
     public void SetScenario(int newScenario)
     {
         currentScenario = newScenario;
@@ -57,6 +58,8 @@ public class TableManager : MonoBehaviour
         UpdateTables();
     }
 
+
+    // Reset the state of a table
     private void ResetTable(GameObject table)
     {
         FarmSimulator simulator = table.GetComponent<FarmSimulator>();
@@ -74,6 +77,7 @@ public class TableManager : MonoBehaviour
         ResetTable(bigTable);
     }
 
+    // Update the visibility of the tables based on the current farm and mode
     private void UpdateTables()
     {
         if (farmMode)
@@ -119,6 +123,7 @@ public class TableManager : MonoBehaviour
         }
     }
 
+    // Set the visibility of a table (renderers and colliders)
     private void SetTableVisibility(GameObject table, bool isVisible)
     {
         // table.SetActive(isVisible);
