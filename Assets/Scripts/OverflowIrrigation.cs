@@ -10,6 +10,8 @@ public class OverflowIrrigation : MonoBehaviour
 
     private Material material;
     private bool isOverflowing = false;
+    private float reuseOffset;
+    private bool useOffset = true;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,12 @@ public class OverflowIrrigation : MonoBehaviour
         }
     }
 
+    // Public method to set the reuse offset of the paddock
+    public void SetOffset(bool newUseOffset)
+    {
+        useOffset = newUseOffset;
+        material.SetFloat("_ReuseOffset", useOffset ? reuseOffset : 0.0f);
+    }
 
     // Coroutine to animate the panner value
     private IEnumerator AnimatePanner(float initialPanner, float targetPanner)

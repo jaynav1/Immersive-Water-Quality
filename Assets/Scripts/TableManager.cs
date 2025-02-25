@@ -7,6 +7,7 @@ using UnityEngine;
 public class TableManager : MonoBehaviour
 {
     private bool farmMode;
+    private bool useOffset;
     private int currentFarm;
     private int currentScenario;
     private ParticleSystem rain;
@@ -39,6 +40,14 @@ public class TableManager : MonoBehaviour
     {
         currentFarm = newFarm;
         UpdateTables();
+    }
+
+    public void ToggleReuseOffset(bool newOffset)
+    {
+        useOffset = newOffset;
+        table.GetComponent<FarmSimulator>().SetOffset(useOffset);
+        smallTable.GetComponent<FarmSimulator>().SetOffset(useOffset);
+        bigTable.GetComponent<FarmSimulator>().SetOffset(useOffset);
     }
 
     // Set the scenario for the tables

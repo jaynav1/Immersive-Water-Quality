@@ -13,6 +13,8 @@ public class PaddockIrrigation : MonoBehaviour
 
     private PaddockState currentState = PaddockState.Empty;
     private Material paddockMaterial;
+    private float reuseOffset;
+    private bool useOffset = true;
 
     public float animationSpeed = 0.1f;
     public Color basePaddockColor;
@@ -21,10 +23,12 @@ public class PaddockIrrigation : MonoBehaviour
     void Start()
     {
         // Initialize the paddock material and set initial properties
-        paddockMaterial = GetComponent<Renderer>().sharedMaterial;
+        paddockMaterial = GetComponent<Renderer>().material;
         paddockMaterial.SetFloat("_Panner", 0.0f);
         paddockMaterial.SetFloat("_Drain", 0.0f);
         paddockMaterial.SetColor("_Color", basePaddockColor);
+
+        reuseOffset = paddockMaterial.GetFloat("_ReuseOffset");
     }
 
     // Coroutine to animate the filling of the paddock
@@ -89,5 +93,12 @@ public class PaddockIrrigation : MonoBehaviour
             paddockMaterial.SetColor("_Color", Color.Lerp(initialColor, targetColor, t));
             yield return null;
         }
+    }
+
+    // Public method to set the reuse offset of the paddock
+    public void SetOffset(bool newUseOffset)
+    {
+        useOffset = newUseOffset;
+        paddockMaterial.SetFloat("_ReuseOffset", useOffset ? reuseOffset : 0.0f);
     }
 }

@@ -12,6 +12,7 @@ public class FarmSimulator : MonoBehaviour
     public GameObject effluentWaterPlane;
     public GameObject paddock;
     public GameObject overflow;
+    public GameObject overflowWater;
     public GameObject reusePipe;
     public GameObject shedPipe;
     public GameObject effluentPipe;
@@ -27,6 +28,7 @@ public class FarmSimulator : MonoBehaviour
     private AnimatePlane effluentWaterPlaneScript;
     private PaddockIrrigation paddockScript;
     private ParticleSystem overflowParticles;
+    private OverflowIrrigation overflowScript;
 
     private MaterialAnimator reusePipeAnimator;
     private MaterialAnimator shedPipeAnimator;
@@ -45,6 +47,7 @@ public class FarmSimulator : MonoBehaviour
         effluentWaterPlaneScript = effluentWaterPlane.GetComponent<AnimatePlane>();
         paddockScript = paddock.GetComponent<PaddockIrrigation>();
         overflowParticles = overflow.GetComponent<ParticleSystem>();
+        overflowScript = overflowWater.GetComponent<OverflowIrrigation>();
         overflowParticles.Stop();
 
         //Get materials from pipes and create instances
@@ -350,7 +353,13 @@ public class FarmSimulator : MonoBehaviour
         {
             return AnimateNormalWeather();
         }
-    } 
+    }
+    
+    public void SetOffset(bool newUseOffset)
+    {
+        paddockScript.SetOffset(newUseOffset);
+        overflowScript.SetOffset(newUseOffset);
+    }
         
 
     private IEnumerator TestMaterialAnimation()

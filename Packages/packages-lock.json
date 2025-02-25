@@ -7,12 +7,12 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.monitor1394.xcharts": {
-      "version": "https://github.com/XCharts-Team/XCharts.git",
+    "com.meta.xr.sdk.core": {
+      "version": "72.0.0",
       "depth": 0,
-      "source": "git",
+      "source": "registry",
       "dependencies": {},
-      "hash": "61fb717d202b369fe80ddf87f2b832bd19528e2b"
+      "url": "https://packages.unity.com"
     },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
@@ -433,7 +433,7 @@
     },
     "com.unity.xr.oculus": {
       "version": "4.1.2",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.management": "4.4.0"
