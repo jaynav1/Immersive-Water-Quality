@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 3613259164
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e1d6ae54f5a4281adf875325e491c681
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e1d6ae54f5a4281adf875325e491c681
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VRTemplateAssets/Materials/Environment/Concrete_Metallic.tif
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Textures/Concrete_Normal.tif
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Textures/Concrete_Metallic.tif
+- Assets/VRTemplateAssets/Materials/Environment/Concrete_Normal.tif
+Dependencies: []

@@ -1,0 +1,51 @@
+ManifestFileVersion: 0
+CRC: 681697833
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 29caca002b856430c3f3e3c80983838f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 29caca002b856430c3f3e3c80983838f
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VRTemplateAssets/Sprites/Icons/Scroll Left.png
+- Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Horizontal.png
+- Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Top.png
+- Assets/VRTemplateAssets/Sprites/Icons/Teleport.png
+- Assets/VRTemplateAssets/Sprites/Icons/Play.png
+- Assets/Textures/SmallFarmBaseTextureNew.png
+- Assets/VRTemplateAssets/Sprites/CoachingCards/Coaching Step 3.png
+- Assets/VRTemplateAssets/Sprites/CoachingCards/Coaching Step 1.png
+- Packages/com.unity.ai.navigation/Gizmos/NavMeshSurface Icon.png
+- Assets/VRTemplateAssets/Materials/Environment/wall_Normal_OpenGL.png
+- Assets/Textures/BaseTextureNew.png
+- Assets/VRTemplateAssets/Materials/Environment/wall_Height.png
+- Assets/Textures/ShedTexture.png
+- Assets/VRTemplateAssets/Materials/Environment/wall_Metallic.png
+- Assets/Textures/CowTexture2.png
+- Assets/VRTemplateAssets/Sprites/Icons/Scroll Down.png
+- Assets/VRTemplateAssets/Materials/Environment/wall2_Metallic.png
+- Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Bottom.png
+- Assets/VRTemplateAssets/Sprites/Icons/Rotate Left.png
+- Assets/VRTemplateAssets/Sprites/UI/Joystick Segment.png
+- Assets/VRTemplateAssets/Materials/Anchor Materials/White_Mixed_AO.png
+- Assets/VRTemplateAssets/Sprites/CoachingCards/Coaching Step 5.png
+- Assets/VRTemplateAssets/Materials/Anchor Materials/Anchor Glow Gradient.png
+- Assets/VRTemplateAssets/Sprites/CoachingCards/Coaching Step 2.png
+- Assets/VRTemplateAssets/Materials/Environment/wall_Base_color.png
+- Assets/VRTemplateAssets/Sprites/UI/Round Radius 10.png
+- Assets/VRTemplateAssets/Sprites/Icons/Scroll Right.png
+- Assets/VRTemplateAssets/Sprites/CoachingCards/Coaching Step 4.png
+- Assets/VRTemplateAssets/Materials/Environment/wall2_Base_color.png
+- Assets/VRTemplateAssets/Sprites/CoachingCards/Coaching Step 6.png
+Dependencies: []

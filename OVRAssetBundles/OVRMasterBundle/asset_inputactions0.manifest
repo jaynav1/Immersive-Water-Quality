@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 154941474
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1c3e6c48b1869e73a8c8c642eaa8bc2c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9fff737646388fdf2c5cf0335c9d8065
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 1c3e6c48b1869e73a8c8c642eaa8bc2c
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 39fa3d8997a24136984ca6e2c99902bc, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.InputSystem
+  ClassName: UnityEngine.InputSystem.InputAction
+- AssemblyName: Unity.InputSystem
+  ClassName: UnityEngine.InputSystem.InputActionMap
+- AssemblyName: Unity.InputSystem
+  ClassName: UnityEngine.InputSystem.InputBinding
+Assets:
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/XRI Default Input Actions.inputactions
+Dependencies: []

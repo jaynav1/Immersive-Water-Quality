@@ -1,0 +1,53 @@
+ManifestFileVersion: 0
+CRC: 394020113
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0cc58864d5bc5d674137623344a0cfd3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b30fce1a9ad74efb72be6c308c56e365
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 0cc58864d5bc5d674137623344a0cfd3
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/XR Hands/1.4.3/HandVisualizer/Materials/White.mat
+- Assets/Materials/PipeMaterial Variant 1.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/FresnelHighlight.mat
+- Assets/Samples/XR Hands/1.4.3/HandVisualizer/Materials/Blue.mat
+- Assets/Samples/XR Hands/1.4.3/HandVisualizer/Materials/Red.mat
+- Assets/Materials/SkyboxMaterial.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/UI-NoZTest.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/Materials/Unity_Hand_Medium.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Tunneling Vignette/TunnelingVignette.mat
+- Assets/VRTemplateAssets/Materials/UI/Handle.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/Controller_White.mat
+- Assets/Textures/CowMaterial.mat
+- Assets/Materials/FarmPlan.drawio.mat
+- Assets/Textures/Bull/Horns.mat
+- Assets/Materials/FarmPlan.drawio Variant 1.mat
+- Assets/Materials/PipeMaterial.mat
+- Assets/VRTemplateAssets/Materials/Environment/Grid Dark Tight.mat
+- Assets/VRTemplateAssets/Materials/Primitive/Interactables 4.mat
+- Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
+- Assets/VRTemplateAssets/Materials/Particles/ConfettiParticles.mat
+- Assets/VRTemplateAssets/Materials/Environment/Arrows.mat
+- Assets/VRTemplateAssets/Materials/Anchor Materials/Blue Anchor Arrow.mat
+- Assets/Textures/Bull/Main.mat
+- Assets/Materials/Shed Variant.mat
+Dependencies:
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_blend0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_png0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_png1
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shadergraph0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_tif0

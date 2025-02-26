@@ -1,0 +1,60 @@
+ManifestFileVersion: 0
+CRC: 2267431217
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2983203fea3fa641563dd9a078ffa316
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b30fce1a9ad74efb72be6c308c56e365
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 2983203fea3fa641563dd9a078ffa316
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/Flat Blue.mat
+- Assets/Textures/Bull/Main_Light.mat
+- Assets/VRTemplateAssets/Materials/Environment/Concrete Grey.mat
+- Assets/Materials/FarmPlan.drawio Variant.mat
+- Assets/Textures/CowMaterial2.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/Controller_Grey.mat
+- Assets/Materials/PaddockMaterial Variant 1.mat
+- Assets/VRTemplateAssets/Materials/Environment/Concrete Blue.mat
+- Assets/Textures/Bull/Hooves.mat
+- Assets/Materials/PaddockMaterial Variant 2.mat
+- Assets/VRTemplateAssets/Materials/Anchor Materials/Anchor Base.mat
+- Assets/VRTemplateAssets/Materials/UI/BezierLink.mat
+- Assets/VRTemplateAssets/Materials/Environment/Wall Cut.mat
+- Assets/Samples/XR Hands/1.4.3/HandVisualizer/Materials/Green.mat
+- Assets/Textures/Bull/Muzzle.mat
+- Assets/Textures/Bull/Eye_White.mat
+- Assets/Textures/Bull/Eye_Black.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/Interactable.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Materials/Concrete
+  Light Blue.mat
+- Assets/VRTemplateAssets/Materials/Controller/Blue.mat
+- Assets/VRTemplateAssets/Materials/Anchor Materials/Anchor Blue Glow.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/Materials/DepthOnly.mat
+- Assets/VRTemplateAssets/Materials/Environment/Grid Dark Large.mat
+- Assets/VRTemplateAssets/Materials/Environment/Wall Default.mat
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Materials/Telport Anchor.mat
+- Assets/VRTemplateAssets/Materials/Environment/Glass.mat
+- Assets/Materials/PaddockMaterial Variant.mat
+- Assets/Materials/WaterMaterial.mat
+- Assets/VRTemplateAssets/Materials/UI/VideoTexture.mat
+- Assets/Materials/PipeMaterial Variant.mat
+Dependencies:
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_mat1
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_png0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_png1
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shadergraph0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_tif0

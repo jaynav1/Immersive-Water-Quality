@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1066495880
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4478fbc3ce8210799692637755202cb7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0df1dec30b5d061d422d3e6493d27647
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 4478fbc3ce8210799692637755202cb7
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+- Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Tunneling Vignette/TunnelingVignette.shader
+- Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
+- Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/Shaders/DepthOnly.shader
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Shaders/UI-NoZTest.shader
+- Assets/VRTemplateAssets/Shaders/Grid.shader
+- Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
+Dependencies: []

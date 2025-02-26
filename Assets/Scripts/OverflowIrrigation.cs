@@ -16,7 +16,7 @@ public class OverflowIrrigation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        material = GetComponent<Renderer>().material;
+        material = GetComponent<Renderer>().sharedMaterial;
         material.SetColor("_Color", overflowColor);
         material.SetFloat("_Panner", 0f);
         material.SetFloat("_Drain", 0f);

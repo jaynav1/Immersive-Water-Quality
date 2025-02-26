@@ -1,0 +1,134 @@
+ManifestFileVersion: 0
+CRC: 4151754241
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bea9a3010a9f84245c082d121481b67b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4f6dcab9ac2219d91aa1d2af0b1813c5
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: bea9a3010a9f84245c082d121481b67b
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: b5d80f45fb5f4418a5e84a476e517628, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6af57311f7c9446fae8acabfbbfdb412, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0ed265b7dcce480f872660373d393d95, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b53eb82258e249bb97cf3789c6a97dda, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6f7c05e2d6a94808ac5dcf4531f19721, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 238
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.Mathematics
+  ClassName: Unity.Mathematics.float3
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.BoolParameter
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.ClampedFloatParameter
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.ClampedIntParameter
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.ColorParameter
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.FloatParameter
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.MinFloatParameter
+- AssemblyName: Unity.RenderPipelines.Core.Runtime
+  ClassName: UnityEngine.Rendering.TextureParameter
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.DownscaleParameter
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.HDRACESPresetParameter
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.NeutralRangeReductionModeParameter
+- AssemblyName: Unity.RenderPipelines.Universal.Runtime
+  ClassName: UnityEngine.Rendering.Universal.TonemappingModeParameter
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.XR.CoreUtils
+  ClassName: Unity.XR.CoreUtils.Datums.AnimationCurveDatumProperty
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.AffordanceThemeData`1[System.Single]
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.AffordanceThemeData`1[Unity.Mathematics.float3]
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.AffordanceThemeData`1[UnityEngine.Color]
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Audio.AudioAffordanceTheme
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Audio.AudioAffordanceThemeData
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Primitives.ColorAffordanceTheme
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Primitives.FloatAffordanceTheme
+- AssemblyName: Unity.XR.Interaction.Toolkit
+  ClassName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Primitives.Vector3AffordanceTheme
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+Assets:
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/AffordanceThemes/HighlightInteractionColorAffordanceTheme.asset
+- Assets/VRTemplateAssets/Themes/AudioAffordanceTheme.asset
+- Assets/VRTemplateAssets/Fonts/Inter/Inter-Regular SDF NoBackfaceCulling.asset
+- Assets/VRTemplateAssets/Themes/ColorAffordanceTheme.asset
+- Assets/Scenes/SampleScene/NavMesh-Floor 2.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Filters/AnyGazedAtTeleportAnchorFilter.asset
+- Assets/VRTemplateAssets/Graphics/Post Process Volume Profile.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/AffordanceThemes/HighlightStrengthInteractionAffordanceTheme.asset
+- Assets/VRTemplateAssets/Themes/EdgeColorAffordanceTheme.asset
+- Assets/Scenes/SampleScene/NavMesh-Floor 1.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/AffordanceThemes/PokeSphereInteractionAffordanceTheme.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/AffordanceThemes/PinchPoint/PinchPointLocalTransformOffset.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/AffordanceThemes/FingerColorAffordanceTheme.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/AffordanceThemes/HandEdgeColorAffordanceTheme.asset
+- Assets/Scenes/SampleScene/NavMesh-Floor 3.asset
+- Assets/VRTemplateAssets/Themes/BlendShapeAffordanceTheme.asset
+- Assets/VRTemplateAssets/Fonts/Inter/Inter-Regular SDF.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/AffordanceThemes/PokeSphereColorAffordanceTheme.asset
+- Assets/VRTemplateAssets/Themes/AnchorAffordanceTheme.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/AffordanceThemes/PinchPoint/PinchPointBlendShape.asset
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/AffordanceThemes/PinchPoint/PinchPointUniformScaleScale.asset
+Dependencies:
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_wav0

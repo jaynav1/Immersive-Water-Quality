@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 4026918649
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4e21d7083b694ca44ce68312d7e56b3c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b30fce1a9ad74efb72be6c308c56e365
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 4e21d7083b694ca44ce68312d7e56b3c
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Shaders/Interactable.shadergraph
+- Assets/VRTemplateAssets/Shaders/InteractablePrimitive.shadergraph
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Shaders/Unlit_Fresnel.shadergraph
+- Assets/Materials/New Shader Graph.shadergraph
+- Assets/Materials/WaterConcentration.shadergraph
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/Shaders/Unity_Hand_Noise.shadergraph
+- Assets/Materials/WaterPaddock.shadergraph
+- Packages/com.unity.render-pipelines.universal/Runtime/Materials/ArnoldStandardSurface/ArnoldStandardSurface.shadergraph
+Dependencies:
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_png1
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shadersubgraph0

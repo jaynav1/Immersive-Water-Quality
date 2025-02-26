@@ -28,11 +28,13 @@ public class AnimatePlane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Exception if the volume is not positive
+        // Log a warning and set a default value if the volume is not positive
         if (fillVolume <= 0)
         {
-            throw new ArgumentException("Fill volume must be positive");
+            Debug.LogWarning("Fill volume must be positive. Setting to default value of 1.");
+            fillVolume = 1.0f;
         }
+
         // Set the initial position of the plane based on the fill volume
         Vector3 newLocation = transform.localPosition;
         newLocation.y = Mathf.Lerp(channelBedHeight, floorHeight, 0);
@@ -45,31 +47,16 @@ public class AnimatePlane : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // No update logic needed for now
-    }
-
     // Coroutine to animate the plane to a new fill volume
-    public IEnumerator movePlane(float newVolume)
+    public IEnumerator MovePlane(float newVolume)
     {
         // Define a small tolerance value
-        float tolerance = 0.1f;
+        float tolerance = 0.01f;
 
         // Turn overflow off
         if (newVolume < fillVolume)
         {
-            if (overflowParticles != null)
-            {
-                overflowParticles.Stop();
-            }
-
-            if (overflowIrrigation != null)
-            {
-                Debug.Log("Stopping overflow");
-                StartCoroutine(overflowIrrigation.StopOverflow());
-            }
+            StopOverflow();
         }
 
         // Get the current position of the plane
@@ -77,10 +64,10 @@ public class AnimatePlane : MonoBehaviour
         float currentHeight = newLocation.y;
 
         // Calculate the target height using SmoothStep for a smoother transition
-        float targetHeight = Mathf.SmoothStep(channelBedHeight, floorHeight, getPercentage(newVolume));
+        float targetHeight = Mathf.SmoothStep(channelBedHeight, floorHeight, GetPercentage(newVolume));
 
         // Move the plane towards the target height
-        while (Mathf.Abs(currentHeight - targetHeight) > 0.01f) // Use a small threshold for comparison
+        while (Mathf.Abs(currentHeight - targetHeight) > tolerance) // Use the tolerance value for comparison
         {
             // Move the current height towards the target height based on the animation speed
             currentHeight = Mathf.MoveTowards(currentHeight, targetHeight, animationSpeed * Time.deltaTime);
@@ -95,17 +82,9 @@ public class AnimatePlane : MonoBehaviour
         currentVolume = newVolume;
 
         // If fillVolume is maximized, overflow
-        if (Mathf.Abs(newVolume - fillVolume) < tolerance)
+        if (currentVolume >= fillVolume)
         {
-            if (overflowParticles != null)
-            {
-                overflowParticles.Play();
-            }
-
-            if (overflowIrrigation != null)
-            {
-                StartCoroutine(overflowIrrigation.StartOverflow());
-            }
+            StartOverflow();
         }
     }
 
@@ -116,19 +95,11 @@ public class AnimatePlane : MonoBehaviour
         newLocation.y = Mathf.Lerp(channelBedHeight, floorHeight, 0);
         transform.localPosition = newLocation;
 
-        if (overflowParticles != null)
-        {
-            overflowParticles.Stop();
-        }
-
-        if (overflowIrrigation != null)
-        {
-            overflowIrrigation.StopOverflow();
-        }
+        StopOverflow();
     }
 
     // Helper method to calculate the percentage of the fill volume
-    private float getPercentage(float newVolume)
+    private float GetPercentage(float newVolume)
     {
         if (fillVolume == 0)
         {
@@ -141,6 +112,36 @@ public class AnimatePlane : MonoBehaviour
     public IEnumerator ChangeVolumeByAmount(float amount)
     {
         currentVolume = Mathf.Clamp(currentVolume + amount, 0, fillVolume);
-        yield return movePlane(currentVolume);
+        yield return MovePlane(currentVolume);
+    }
+
+    // Method to start overflow
+    private void StartOverflow()
+    {
+        if (overflowParticles != null)
+        {
+            overflowParticles.Play();
+        }
+
+        if (overflowIrrigation != null)
+        {
+            Debug.Log("Starting overflow");
+            StartCoroutine(overflowIrrigation.StartOverflow());
+        }
+    }
+
+    // Method to stop overflow
+    private void StopOverflow()
+    {
+        if (overflowParticles != null)
+        {
+            overflowParticles.Stop();
+        }
+
+        if (overflowIrrigation != null)
+        {
+            Debug.Log("Stopping overflow");
+            StartCoroutine(overflowIrrigation.StopOverflow());
+        }
     }
 }

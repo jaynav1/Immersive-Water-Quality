@@ -1,0 +1,65 @@
+ManifestFileVersion: 0
+CRC: 3686592515
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dc92e72b4baddac0b2231d0a1fa3f406
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 816ccb839d04ded98d2b9b1cb58af364
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: dc92e72b4baddac0b2231d0a1fa3f406
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VRTemplateAssets/Models/Anchor/AnchorFade.fbx
+- Assets/VRTemplateAssets/Models/Primitives/Torus.fbx
+- Assets/VRTemplateAssets/Models/Primitives/Cube.fbx
+- Assets/VRTemplateAssets/Models/Anchor/AnchorBase.fbx
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Tunneling Vignette/TunnelingVignetteHemisphere.fbx
+- Assets/Samples/XR Hands/1.4.3/HandVisualizer/Models/RightHand.fbx
+- Assets/VRTemplateAssets/Models/Primitives/Tapered Cylinder.fbx
+- Assets/VRTemplateAssets/Models/Environment/Torus Cut.fbx
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Models/BlinkVisual.fbx
+- Assets/VRTemplateAssets/Models/Environment/Template Environment.fbx
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Models/UniversalController.fbx
+- Assets/VRTemplateAssets/Models/Primitives/Sphere.fbx
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Models/Pinch_Pointer_LOD0.fbx
+- Assets/VRTemplateAssets/Models/Primitives/Cylinder.fbx
+- Assets/Bull.fbx
+- Assets/VRTemplateAssets/Models/Environment/Arrows.fbx
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Models/Primitive_Blaster.fbx
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Models/Reticle_Torus.fbx
+- Assets/VRTemplateAssets/Models/Environment/Totem2.fbx
+- Assets/Samples/XR Hands/1.4.3/HandVisualizer/Models/LeftHand.fbx
+- Assets/VRTemplateAssets/Models/Environment/Totem1.fbx
+- Assets/BlenderCow.fbx
+- Assets/VRTemplateAssets/Models/UI/Spatial Panel Manipulator Model.fbx
+- Assets/VRTemplateAssets/Models/Anchor/AnchorArrow.fbx
+Dependencies:
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_mat1
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_shadergraph0

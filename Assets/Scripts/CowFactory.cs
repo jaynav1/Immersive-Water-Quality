@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -98,8 +97,9 @@ public class CowFactory : MonoBehaviour
         // Check if all cows have reached their destination
         bool allReached = false;
         float tolerance = 0.01f;
+        float startTime = Time.time;
 
-        while (!allReached)
+        while (!allReached && Time.time - startTime < 10f)
         {
             allReached = true;
 
@@ -133,8 +133,9 @@ public class CowFactory : MonoBehaviour
         // Check if all cows have reached their destination
         bool allReached = false;
         float tolerance = 0.5f;
+        float startTime = Time.time;
 
-        while (!allReached)
+        while (!allReached && Time.time - startTime < 10f)
         {
             allReached = true;
 

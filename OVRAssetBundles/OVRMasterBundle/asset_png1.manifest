@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 3303961995
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 05b7fba2d6653fa0e1587d20400f9a0c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 05b7fba2d6653fa0e1587d20400f9a0c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VRTemplateAssets/Sprites/Icons/Chevron.png
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Textures/DefaultMaterial_AO.png
+- Packages/com.unity.inputsystem/InputSystem/Editor/Icons/TrackedPoseDriver@4x.png
+- Assets/VRTemplateAssets/Sprites/UI/Circle_60x60_Vertical.png
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Sprites/Circle_60x60_Horizontal.png
+- Assets/Textures/BigFarmBaseTextureNew.png
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Sprites/LegibilityMask.png
+- Packages/com.unity.render-pipelines.core/Editor/Volume/Icons/VolumeProfileAsset.png
+- Packages/com.unity.render-pipelines.core/Editor/Volume/Icons/Volume.png
+- Assets/VRTemplateAssets/Sprites/Icons/Pause.png
+- Assets/VRTemplateAssets/Materials/Environment/wall2_Normal_OpenGL.png
+- Assets/VRTemplateAssets/Sprites/UI/Round Radius 10 Outline.png
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Hands Interaction Demo/Textures/CombinedFingerIndexHighlight.png
+- Assets/VRTemplateAssets/Sprites/Icons/Scroll Up.png
+- Assets/VRTemplateAssets/Sprites/Icons/Rotate Right.png
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Sprites/Forward.png
+- Assets/Textures/CowTexture.png
+Dependencies: []

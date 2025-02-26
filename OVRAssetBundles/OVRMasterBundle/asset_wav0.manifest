@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 248800612
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5d7db8a57d12e0cb498145f0d0b9d02b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 5d7db8a57d12e0cb498145f0d0b9d02b
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VRTemplateAssets/Audio/Button_14_hover.wav
+- Assets/VRTemplateAssets/Audio/Button_22_click.wav
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/DemoSceneAssets/Audio/Button
+  Pop.wav
+Dependencies: []

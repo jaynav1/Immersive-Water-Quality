@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 562456244
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 176cba45862955712fe5bb2d12671d3f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5941c3541d8b403f80e37b0d697371e8
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 176cba45862955712fe5bb2d12671d3f
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Animations/ArrowBounce.anim
+- Assets/VRTemplateAssets/Models/Anchor/AnchorFadeScale.anim
+Dependencies: []

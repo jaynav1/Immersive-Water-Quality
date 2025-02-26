@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 130366629
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 11f6255484bd977be7b74c3c783c7624
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e8df1f9f82371e82de919a94edcc7dd6
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 11f6255484bd977be7b74c3c783c7624
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bull.controller
+- Assets/Samples/XR Interaction Toolkit/3.0.3/Starter Assets/Animations/Climb Teleport
+  Arrow.controller
+Dependencies:
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_anim0
+- C:/Users/FIT Staff/Documents/jnav0005/Immersive-Water-Quality/OVRAssetBundles/OVRMasterBundle/asset_fbx0

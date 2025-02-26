@@ -90,7 +90,7 @@ public class FarmSimulator : MonoBehaviour
             effluentPipeAnimator.StopAnimation(this);
 
             // 2. fill the paddock while draining the irrigation water plane
-            StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
+            StartCoroutine(irrigationWaterPlaneScript.MovePlane(0));
             yield return StartCoroutine(paddockScript.AnimateFill());
 
             yield return cowFactory.MoveToPlane(paddock);
@@ -102,7 +102,7 @@ public class FarmSimulator : MonoBehaviour
 
             // 4. fill the reuse water plane while draining the paddock and no overflow due to sufficient storage
             StartCoroutine(paddockScript.AnimateDrain());
-            yield return StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(1700));
+            yield return StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(900));
 
             // 5. fill the effluent water plane
             shedPipeAnimator.StartAnimation(this);
@@ -111,8 +111,8 @@ public class FarmSimulator : MonoBehaviour
 
             // 6. Pump water back to irrigation (effluent + pump rate of reuse)
 
-            StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-1500));
+            StartCoroutine(effluentWaterPlaneScript.MovePlane(0));
+            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-500));
             reusePipeAnimator.StartAnimation(this);
             effluentPipeAnimator.StartAnimation(this);
             //overflowParticles.Stop();
@@ -124,175 +124,82 @@ public class FarmSimulator : MonoBehaviour
     // Scenario 2: Heavy rainfall with overflow
     private IEnumerator AnimateHeavyRainfall()
     {
-        // 1. fill the irrigation water plane
-        //reusePipeAnimator.StartAnimation(this);
-        yield return irrigationWaterPlaneScript.movePlane(1900);
-        //reusePipeAnimator.StopAnimation(this);
+        while (true)
+        {       
+            // 1. fill the irrigation water plane
+            //reusePipeAnimator.StartAnimation(this);
+            yield return irrigationWaterPlaneScript.ChangeVolumeByAmount(1900);
+            reusePipeAnimator.StopAnimation(this);
+            effluentPipeAnimator.StopAnimation(this);
 
-        // 2. fill the paddock while draining the irrigation water plane
-        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
-        yield return StartCoroutine(paddockScript.AnimateFill());
+            // 2. fill the paddock while draining the irrigation water plane
+            StartCoroutine(irrigationWaterPlaneScript.MovePlane(0));
+            yield return StartCoroutine(paddockScript.AnimateFill());
 
-        // 3. saturate the paddock
-        yield return StartCoroutine(paddockScript.AnimateSaturation());
+            yield return cowFactory.MoveToPlane(paddock);
 
-        // 4. fill the reuse water plane while draining the paddock and overflow due to heavy rainfall
-        StartCoroutine(paddockScript.AnimateDrain());
-        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(1000));
-        overflowParticles.Play();
+            // 3. saturate the paddock
+            yield return StartCoroutine(paddockScript.AnimateSaturation());
 
-        // 5. fill the effluent water plane 
-        shedPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
-        shedPipeAnimator.StopAnimation(this);
+            yield return cowFactory.ReturnCows();
 
-        // 6. Pump water back to irrigation (effluent + pump rate of reuse)
-        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-        StartCoroutine(reuseWaterPlaneScript.movePlane(1000 - 500));
-        reusePipeAnimator.StartAnimation(this);
-        effluentPipeAnimator.StartAnimation(this);
-        overflowParticles.Stop();
-        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(500 + 100));
-        reusePipeAnimator.StopAnimation(this);
-        effluentPipeAnimator.StopAnimation(this);
+            // 4. fill the reuse water plane while draining the paddock and overflow due to heavy rainfall
+            StartCoroutine(paddockScript.AnimateDrain());
+            yield return StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(1000));
+
+            // 5. fill the effluent water plane 
+            shedPipeAnimator.StartAnimation(this);
+            yield return StartCoroutine(effluentWaterPlaneScript.ChangeVolumeByAmount(500));
+            shedPipeAnimator.StopAnimation(this);
+
+            // 6. Pump water back to irrigation (effluent + pump rate of reuse)
+            StartCoroutine(effluentWaterPlaneScript.MovePlane(0));
+            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-600));
+            reusePipeAnimator.StartAnimation(this);
+            effluentPipeAnimator.StartAnimation(this);
+            yield return StartCoroutine(irrigationWaterPlaneScript.ChangeVolumeByAmount(600));
+        }
     }
 
     // Scenario 3: Drought conditions with limited water
     private IEnumerator AnimateDroughtConditions()
     {
-        // 1. fill the irrigation water plane with limited water
-        //reusePipeAnimator.StartAnimation(this);
-        yield return irrigationWaterPlaneScript.movePlane(500);
-        //reusePipeAnimator.StopAnimation(this);
+        while (true)
+        {
+            // 1. fill the irrigation water plane with limited water
+            //reusePipeAnimator.StartAnimation(this);
+            yield return irrigationWaterPlaneScript.ChangeVolumeByAmount(500);
+            reusePipeAnimator.StopAnimation(this);
+            effluentPipeAnimator.StopAnimation(this);
 
-        // 2. fill the paddock while draining the irrigation water plane
-        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
-        yield return StartCoroutine(paddockScript.AnimateFill());
+            // 2. fill the paddock while draining the irrigation water plane
+            StartCoroutine(irrigationWaterPlaneScript.MovePlane(0));
+            yield return StartCoroutine(paddockScript.AnimateFill());
 
-        // 3. saturate the paddock
-        yield return StartCoroutine(paddockScript.AnimateSaturation());
+            yield return cowFactory.MoveToPlane(paddock);
 
-        // 4. fill the reuse water plane while draining the paddock with limited water
-        StartCoroutine(paddockScript.AnimateDrain());
-        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(500));
+            // 3. saturate the paddock
+            yield return StartCoroutine(paddockScript.AnimateSaturation());
 
-        // 5. fill the effluent water plane with limited water
-        shedPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(250));
-        shedPipeAnimator.StopAnimation(this);
+            yield return cowFactory.ReturnCows();
 
-        // 6. Pump water back to irrigation (effluent + pump rate of reuse)
-        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-        StartCoroutine(reuseWaterPlaneScript.movePlane(500 - 250));
-        reusePipeAnimator.StartAnimation(this);
-        effluentPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(250 + 50));
-        reusePipeAnimator.StopAnimation(this);
-        effluentPipeAnimator.StopAnimation(this);
-    }
+            // 4. fill the reuse water plane while draining the paddock with limited water
+            StartCoroutine(paddockScript.AnimateDrain());
+            yield return StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(500));
 
-    // Scenarios for different storage volumes 
-    // Least storage volume with normal weather condition
-    private IEnumerator AnimateLeastStorageConditions()
-    {
-        // 1. fill the irrigation water plane as per the weather condition for which the storage volume is being visualised for 
-        //reusePipeAnimator.StartAnimation(this);
-        yield return irrigationWaterPlaneScript.movePlane(1700);
-        //reusePipeAnimator.StopAnimation(this);
+            // 5. fill the effluent water plane with limited water
+            shedPipeAnimator.StartAnimation(this);
+            yield return StartCoroutine(effluentWaterPlaneScript.ChangeVolumeByAmount(300));
+            shedPipeAnimator.StopAnimation(this);
 
-        // 2. fill the paddock while draining the irrigation water plane
-        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
-        yield return StartCoroutine(paddockScript.AnimateFill());
-
-        // 3. saturate the paddock
-        yield return StartCoroutine(paddockScript.AnimateSaturation());
-
-        // 4. fill the reuse water plane while draining the paddock which leads to overflow due to less storage 
-        StartCoroutine(paddockScript.AnimateDrain());
-        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(1200));
-        overflowParticles.Play();
-
-        // 5. fill the effluent water plane 
-        shedPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
-        shedPipeAnimator.StopAnimation(this);
-
-        // 6. Pump some water back to irrigation (effluent + pump rate of reuse) and also indicate some overflow
-        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-        StartCoroutine(reuseWaterPlaneScript.movePlane(1200 - 150));
-        reusePipeAnimator.StartAnimation(this);
-        effluentPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(1700 + 150));
-        reusePipeAnimator.StopAnimation(this);
-        effluentPipeAnimator.StopAnimation(this);
-    }
-
-    // Average storage volume with normal weather condition
-    private IEnumerator AnimateLeastStorageCondition()
-    {
-        // 1. fill the irrigation water plane as per the weather condition for which the storage volume is being visualised for
-        //reusePipeAnimator.StartAnimation(this);
-        yield return irrigationWaterPlaneScript.movePlane(1700);
-        //reusePipeAnimator.StopAnimation(this);
-
-        // 2. fill the paddock while draining the irrigation water plane
-        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
-        yield return StartCoroutine(paddockScript.AnimateFill());
-
-        // 3. saturate the paddock
-        yield return StartCoroutine(paddockScript.AnimateSaturation());
-
-        // 4. fill the reuse water plane while draining the paddock  
-        StartCoroutine(paddockScript.AnimateDrain());
-        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(900));
-
-        // 5. fill the effluent water plane 
-        shedPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(500));
-        shedPipeAnimator.StopAnimation(this);
-
-        // 6. Pump some water back to irrigation (effluent + pump rate of reuse) and also indicate some overflow
-        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-        StartCoroutine(reuseWaterPlaneScript.movePlane(900 - 500));
-        reusePipeAnimator.StartAnimation(this);
-        effluentPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(500 + 100));
-        reusePipeAnimator.StopAnimation(this);
-        effluentPipeAnimator.StopAnimation(this);
-    }
-
-    // Maximum storage volume
-    private IEnumerator AnimateLeastStorageCondition_2()
-    {
-        // 1. fill the irrigation water plane as per the weather condition for which the storage volume is being visualised for 
-        //reusePipeAnimator.StartAnimation(this);
-        yield return irrigationWaterPlaneScript.movePlane(1700);
-        //reusePipeAnimator.StopAnimation(this);
-
-        // 2. fill the paddock while draining the irrigation water plane
-        StartCoroutine(irrigationWaterPlaneScript.movePlane(0));
-        yield return StartCoroutine(paddockScript.AnimateFill());
-
-        // 3. saturate the paddock
-        yield return StartCoroutine(paddockScript.AnimateSaturation());
-
-        // 4. fill the reuse water plane while draining the paddock which leads to overflow due to less storage 
-        StartCoroutine(paddockScript.AnimateDrain());
-        yield return StartCoroutine(reuseWaterPlaneScript.movePlane(800));
-
-        // 5. fill the effluent water plane 
-        shedPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(effluentWaterPlaneScript.movePlane(400));
-        shedPipeAnimator.StopAnimation(this);
-
-        // 6. Pump some water back to irrigation (effluent + pump rate of reuse) and also indicate some overflow
-        StartCoroutine(effluentWaterPlaneScript.movePlane(0));
-        StartCoroutine(reuseWaterPlaneScript.movePlane(800 - 150));
-        reusePipeAnimator.StartAnimation(this);
-        effluentPipeAnimator.StartAnimation(this);
-        yield return StartCoroutine(irrigationWaterPlaneScript.movePlane(1700 + 150));
-        reusePipeAnimator.StopAnimation(this);
-        effluentPipeAnimator.StopAnimation(this);
+            // 6. Pump water back to irrigation (effluent + pump rate of reuse)
+            StartCoroutine(effluentWaterPlaneScript.MovePlane(0));
+            StartCoroutine(reuseWaterPlaneScript.ChangeVolumeByAmount(-500));
+            reusePipeAnimator.StartAnimation(this);
+            effluentPipeAnimator.StartAnimation(this);
+            yield return StartCoroutine(irrigationWaterPlaneScript.ChangeVolumeByAmount(500));
+            yield return new WaitForSeconds(3f);
+        }
     }
 
     // Reset the farm simulator to the initial state
@@ -335,19 +242,15 @@ public class FarmSimulator : MonoBehaviour
     {
         if (value == 0)
         {
-            return AnimateNormalWeather();
+            return AnimateDroughtConditions();
         }
         else if (value == 1)
         {
-            return AnimateHeavyRainfall();
+            return AnimateNormalWeather();
         }
         else if (value == 2)
         {
-            return AnimateDroughtConditions();
-        }
-        else if (value == 3)
-        {
-            return AnimateLeastStorageConditions();
+            return AnimateHeavyRainfall();
         }
         else
         {

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1914690892
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2ed702d5eea79b378239c948a9793cb0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c12678a98877549a3fe7bb52917258ad
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 2ed702d5eea79b378239c948a9793cb0
+HashAppended: 0
+ClassTypes:
+- Class: 329
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VRTemplateAssets/Videos/onboarding_video_final.mp4
+Dependencies: []
