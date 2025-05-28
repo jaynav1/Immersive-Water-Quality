@@ -11,6 +11,7 @@ public class TableManager : MonoBehaviour
     private int currentFarm;
     private int currentScenario;
     private ParticleSystem rain;
+    private GameObject directionalLight;
 
     // Table objects
     public GameObject smallTable;
@@ -22,6 +23,7 @@ public class TableManager : MonoBehaviour
     void Start()
     {
         rain = rainObject.GetComponent<ParticleSystem>();
+        directionalLight = GameObject.Find("Directional Light");
     }
 
     // Update is called once per frame
@@ -59,10 +61,15 @@ public class TableManager : MonoBehaviour
         if (currentScenario == 0)
         {
             rain.Stop();
-        } 
+            StartCoroutine(SetFogDensity(0.01f)); // Clear fog for scenario 0
+            StartCoroutine(AnimateSun(Quaternion.Euler(75, 90, 0))); // Set light rotation for scenario 0
+        }
         else
         {
             rain.Play();
+            if (currentScenario == 1) StartCoroutine(SetFogDensity(0.2f));
+            else StartCoroutine(SetFogDensity(0.3f));
+            StartCoroutine(AnimateSun(Quaternion.Euler(45, 90, 0))); // Set light rotation for scenarios 1 and 2
         }
         UpdateTables();
     }
@@ -150,5 +157,35 @@ public class TableManager : MonoBehaviour
         {
             collider.enabled = isVisible;
         }
+    }
+
+    public IEnumerator SetFogDensity(float newFogDensity)
+    {
+        // Set the fog density over time
+        float currentDensity = RenderSettings.fogDensity;
+        float elapsedTime = 0f;
+        float duration = 1f; // Duration of the transition in seconds
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            RenderSettings.fogDensity = Mathf.Lerp(currentDensity, newFogDensity, elapsedTime / duration);
+            yield return null;
+        }
+        RenderSettings.fogDensity = newFogDensity; // Ensure final value is set
+    }
+
+    public IEnumerator AnimateSun(Quaternion newRotation)
+    {
+        // Animate the sun rotation over time
+        Quaternion currentRotation = directionalLight.transform.rotation;
+        float elapsedTime = 0f;
+        float duration = 1f; // Duration of the transition in seconds
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            directionalLight.transform.rotation = Quaternion.Slerp(currentRotation, newRotation, elapsedTime / duration);
+            yield return null;
+        }
+        directionalLight.transform.rotation = newRotation; // Ensure final value is set
     }
 }
